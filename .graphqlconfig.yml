@@ -1,0 +1,16 @@
+projects:
+  paetzundpartnermobil:
+    schemaPath: src\graphql\schema.json
+    includes:
+      - src\graphql\**\*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src\graphql
+        graphQLApiId: vyer2ghbnfatpd52tk4x5hogv4
+      endpoints:
+        prod: >-
+          https://iicyrmkdvrfzppsboeqbwyejru.appsync-api.eu-central-1.amazonaws.com/graphql

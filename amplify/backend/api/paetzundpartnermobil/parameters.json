@@ -1,0 +1,10 @@
+{
+    "AppSyncApiName": "paetzundpartnermobil",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognito22609bd3",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

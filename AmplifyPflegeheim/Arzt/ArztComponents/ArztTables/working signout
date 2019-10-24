@@ -1,0 +1,89 @@
+import React from 'react'
+import { View, Text } from 'react-native'
+import { withAuthenticator } from 'aws-amplify-react-native'
+
+import { Image, TouchableWithoutFeedback, Keyboard  } from 'react-native';
+import { AppLoading } from 'expo';
+import { Asset } from 'expo-asset';
+import { Block, GalioProvider } from 'galio-framework';
+
+
+import Auth from '@aws-amplify/auth';
+import Analytics from '@aws-amplify/analytics';
+import Amplify from '@aws-amplify/core';
+import {Authenticator} from "aws-amplify-react-native"
+import awsconfig from './aws-exports';
+
+import Screens from './navigation/Screens';
+import { Images, articles, argonTheme } from './constants';
+import NavbarParts from './AmplifyPflegeheim/Arzt/ArztComponents/Navigation/NavbarParts'
+
+
+
+
+// retrieve temporary AWS credentials and sign requests
+Auth.configure(awsconfig);
+// send analytics events to Amazon Pinpoint
+Analytics.configure(awsconfig);
+
+AWS.config.update({ region: 'eu-central-1' });
+
+
+
+AWS.config.update({ 
+accessKeyId: "AKIAXYEFCTOLZXS66XEH",
+  secretAccessKey: "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", 
+region: 'eu-central-1',
+
+});
+
+const myAppConfig = {
+  // ...
+  'aws_appsync_graphqlEndpoint': 'https://eadhqhsttnhuzkf2ouptrzulda.appsync-api.eu-central-1.amazonaws.com/graphql',
+  'aws_appsync_region': 'eu-central-1',
+  "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
+  'aws_appsync_apiKey': 'da2-3jjnfmyldvg2lk35d24fjoe3tm',
+  // ...
+}
+
+Amplify.configure(myAppConfig);
+
+Amplify.configure({
+  Auth: {
+      // REQUIRED - Amazon Cognito Identity Pool ID
+      IdentityPoolId: 'eu-central-1:f03ab4b7-37ea-440c-b6b8-8f1b07aa1d54', 
+      // REQUIRED - Amazon Cognito Region
+      region: 'eu-central-1', 
+      // OPTIONAL - Amazon Cognito User Pool ID
+      userPoolId: 'eu-central-1_OEyQ7sJ8l',
+      // OPTIONAL - Amazon Cognito Web Client ID
+      userPoolWebClientId: '7rlfpvmb6tg7captv373bh2392', 
+  },
+  Storage: {
+    AWSS3: {
+        bucket: 'amplifypflegeheimb4f4dd738df84d92a36c5595bc6d52f3-pflegeenv', //REQUIRED -  Amazon S3 bucket
+        region: 'eu-central-1', //OPTIONAL -  Amazon service region
+    }
+}
+});
+
+function App(props) {
+  function signOut() {
+    Auth.signOut()
+      .then(() => {
+        props.onStateChange('signedOut', null);
+      })
+      .catch(err => {
+        console.log('err: ', err)
+      })
+  }
+  
+  return (
+    <View>
+      <Text>Hello World</Text>
+      <Text onPress={signOut}>Sign Out</Text>
+    </View>
+  )
+}
+
+export default withAuthenticator(App)

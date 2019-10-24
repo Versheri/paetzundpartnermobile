@@ -1,0 +1,19 @@
+{
+    "paetzmob": {
+        "awscloudformation": {
+            "AuthRoleName": "paetzundpartnermobil-20191025001457-authRole",
+            "UnauthRoleArn": "arn:aws:iam::532635204225:role/paetzundpartnermobil-20191025001457-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::532635204225:role/paetzundpartnermobil-20191025001457-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "paetzundpartnermobil-20191025001457-deployment",
+            "UnauthRoleName": "paetzundpartnermobil-20191025001457-unauthRole",
+            "StackName": "paetzundpartnermobil-20191025001457",
+            "StackId": "arn:aws:cloudformation:eu-central-1:532635204225:stack/paetzundpartnermobil-20191025001457/b6780430-f6ab-11e9-8822-06dd2d585442"
+        },
+        "categories": {
+            "auth": {
+                "cognito22609bd3": {}
+            }
+        }
+    }
+}
