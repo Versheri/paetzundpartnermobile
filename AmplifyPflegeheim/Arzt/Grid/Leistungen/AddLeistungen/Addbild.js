@@ -341,7 +341,13 @@ export default class AddBild extends React.Component {
                   selectedDate: this.state.selectedDate, SessionList:this.state.SessionList, ListRecords:this.state.ListRecords})
                   
               } else if( this.state.pass == 'Praxis'){
-                null
+                
+                this.props.navigation.push('Leistungen', {patientId: this.props.navigation.state.params.patientId,
+                  client: this.props.navigation.state.params.client,
+                  Pflegeheim: this.state.Pflegeheim,
+                  PflegeheimN: this.state.PflegeheimN,
+                  pass: this.props.navigation.state.params.pass,
+                  selectedDate: this.state.selectedDate, SessionList:this.state.SessionList, ListRecords:this.state.ListRecords})
             
               } 
               

@@ -205,7 +205,7 @@ export default class AddEintrag extends React.Component {
                        Leistung: this.state.results,
                        ids: [this.state.results]}
                    ))
-                   console.warn('Track', Track)
+                   console.warn('Track', Track[0])
   
                    const Tracks = Track[0]
          
@@ -278,7 +278,14 @@ export default class AddEintrag extends React.Component {
           selectedDate: this.state.selectedDate, SessionList:this.state.SessionList, ListRecords:this.state.ListRecords})
             
         } else if( this.state.pass == 'Praxis'){
-          null
+          
+          
+          this.props.navigation.push('Leistungen', {patientId: this.props.navigation.state.params.patientId,
+            client: this.props.navigation.state.params.client,
+            Pflegeheim: this.state.Pflegeheim,
+            PflegeheimN: this.state.PflegeheimN,
+            pass: this.props.navigation.state.params.pass,
+            selectedDate: this.state.selectedDate, SessionList:this.state.SessionList, ListRecords:this.state.ListRecords})
       
         } 
         
