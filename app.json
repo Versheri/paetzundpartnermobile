@@ -1,12 +1,13 @@
 {
   "expo": {
-    "name": "derzahnarzt",
+    "name": "paetzundpartnermobile",
     "slug": "DerZahnarztKommt",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "web"
     ],
     "version": "1.1.0",
     "orientation": "portrait",

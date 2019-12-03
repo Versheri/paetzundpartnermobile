@@ -15,5 +15,22 @@
                 "cognito22609bd3": {}
             }
         }
+    },
+    "mobiletest": {
+        "awscloudformation": {
+            "AuthRoleName": "paetzundpartnermobil-20191203171700-authRole",
+            "UnauthRoleArn": "arn:aws:iam::532855036823:role/paetzundpartnermobil-20191203171700-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::532855036823:role/paetzundpartnermobil-20191203171700-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "paetzundpartnermobil-20191203171700-deployment",
+            "UnauthRoleName": "paetzundpartnermobil-20191203171700-unauthRole",
+            "StackName": "paetzundpartnermobil-20191203171700",
+            "StackId": "arn:aws:cloudformation:eu-central-1:532855036823:stack/paetzundpartnermobil-20191203171700/5626a2b0-15e8-11ea-84e6-0264b9b54242"
+        },
+        "categories": {
+            "auth": {
+                "cognito22609bd3": {}
+            }
+        }
     }
 }

@@ -19,10 +19,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import gql from 'graphql-tag';
 import { buildMutation } from 'aws-appsync';
 
-
-
 const { width } = Dimensions.get('screen');
-
 
 const initialState = {
     patient: "",
@@ -297,7 +294,7 @@ toggleModal = () => {
 
   Batch(){
     // console.warn('Behand', this.state.Behandlung)
-    // console.warn('ExtraBehand', this.state.ExtraBehandlungen)
+    // consoleBatch.warn('ExtraBehand', this.state.ExtraBehandlungen)
     const Kette = this.state.Kettendata.map((rest, i) => (rest.Name))
     const file = {
     key: "-",
