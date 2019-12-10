@@ -20,10 +20,10 @@ import SegmentedControlTab from "react-native-segmented-control-tab";
 import AWSAppSyncClient, { buildSubscription } from 'aws-appsync';
 import { ApolloProvider } from "react-apollo";
 import { Rehydrated, graphqlMutation } from "aws-appsync-react";
-import AppSyncConfig from "../../../../aws-exports";
+import AppSyncConfig from "../../../../exports2";
 import gql from 'graphql-tag';
 import { buildMutation } from 'aws-appsync';
-import aws_config from '../../../../aws-exports'
+import aws_config from '../../../../exports2'
 import TouchableSwipe from 'react-native-touchable-swipe'
 import DatePicker from 'react-native-datepicker'
 
@@ -382,6 +382,63 @@ componentDidMount = async () => {
           console.log( "success", result )
   
             
+        }
+        else if( this.state.pass == 'PraxisKomm'){
+
+          var dates = new Date().getDate()
+          var month = new Date().getMonth() + 1; //Current Month
+          var year = new Date().getFullYear(); //Current Year
+  
+          var Arztid = this.state.Arzt.map((rest)=>( rest.id))
+          var date = dates + '/' + month + '/' + year
+          var Praxis = this.state.Arzt.map((rest)=>( rest.Praxis))
+  
+          var ListPatient = this.state.Distanz.map((rest) => (
+            (rest.Start.includes(PflegeheimN) || rest.Ende.includes(PflegeheimN))
+            &&
+           ( rest.Start.includes(Praxis) || rest.Ende.includes(Praxis) )? (
+             rest
+             ): null
+         ))
+        
+         ListPatient = ListPatient.filter( Boolean );
+          console.warn('Distanz', ListPatient)
+
+          var Hour = new Date().getHours();
+    var Minutes = new Date().getMinutes();
+
+    if((Hour>= 20 && Minutes>=1) || (Hour<8 && Minutes>=0)){
+      var Distanzo = Number(ListPatient.map((rest, i) => (rest.Distanz)))+1
+      var Distanz = Distanzo.toString()
+    } else {
+      var Distanzo = ListPatient.map((rest, i) => (rest.Distanz))
+   var Distanz = Distanzo[0]
+   console.warn('Hello', Distanzo, Distanz)
+    }
+  
+          var Track = ListPatient.map((rest, i) => (
+            {ArztId: Arztid[0], PatientId: this.state.patientId,
+              Date: this.state.selectedDate, 
+                Session: this.state.SessionList, 
+                SessionTime: this.state.ListRecords, Number: "1",
+              Praxis: Praxis[0],
+              distanz: Distanz, end: rest.Ende, start: rest.Start,
+              Leistung: this.state.results,
+              ids: [this.state.results]}
+          ))
+          console.warn('Track', Track)
+          const Tracks = Track[0]
+  
+          const result = await API.graphql(graphqlOperation(mutations2.createTracking, {input: Tracks}))
+          console.log( "success", result )
+  
+          this.props.navigation.push('Leistungen', {patientId: this.props.navigation.state.params.patientId,
+            client: this.props.navigation.state.params.client,
+            Pflegeheim: this.state.Pflegeheim,
+            PflegeheimN: this.state.PflegeheimN,
+            pass: this.props.navigation.state.params.pass,
+            selectedDate: this.state.selectedDate, SessionList:this.state.SessionList, ListRecords:this.state.ListRecords})
+            
         } else if( this.state.pass == 'Praxis'){
           null
       
@@ -550,7 +607,13 @@ componentDidMount = async () => {
         this.setState({ Ziel: 'Praxis' })
         this.setState({ pass: 'Praxis' })
       
-        } else {
+        } else if(value == 'PraxisKomm'){
+          this.setState({ showEintrag: true })
+          this.setState({ showLeistung: true })
+          this.setState({ Ziel: 'PraxisKomm' })
+          this.setState({ pass: 'PraxisKomm' })
+        
+          } else {
           this.setState({ showEintrag: true })
         this.setState({ showLeistung: true })
         this.setState({ showPflegeheime: false })
@@ -677,6 +740,7 @@ componentDidMount = async () => {
            <Button onPress = {() => this.Start('Zuhause')}>von Zuhause</Button>
            <Button onPress = {() => this.Start('Pflegeheim')}>vom Pflegeheim</Button>
            <Button onPress = {() => this.Start('Praxis')}>Bin in der Praxis</Button>
+           <Button onPress = {() => this.Start('PraxisKomm')}>Komme von der Praxis</Button>
            </>
            }
 
@@ -714,6 +778,9 @@ componentDidMount = async () => {
             }
             {this.state.pass=='Praxis' &&
             <Button onPress={()=>this.showorigin()}>Du bist in der Praxis (Ändern)</Button>
+            }
+            {this.state.pass=='PraxisKomm' &&
+            <Button onPress={()=>this.showorigin()}>Du kommst von der Praxis</Button>
             }
 
 

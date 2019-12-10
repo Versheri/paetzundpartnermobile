@@ -8,7 +8,7 @@ import {
   Dimensions
 } from "react-native";
 //galio
-import { Block, Text, theme } from "galio-framework";
+import { Block, Text, theme } from 'react-native-paper';
 //argon
 import { articles, Images, argonTheme } from "../constants/";
 import { Card } from "../components/";

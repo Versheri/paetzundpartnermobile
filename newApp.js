@@ -2,13 +2,12 @@ import React from 'react';
 import { Image, TouchableWithoutFeedback, Keyboard, Text  } from 'react-native';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
-import { Block, GalioProvider } from 'galio-framework';
+import { Block, GalioProvider } from 'react-native-paper';
 import { DataTable, Card, Avatar, Searchbar, HelperText, Button  } from 'react-native-paper';
 
 
 
 import Auth from '@aws-amplify/auth';
-import Analytics from '@aws-amplify/analytics';
 import Amplify from '@aws-amplify/core';
 import {Authenticator} from "aws-amplify-react-native"
 import { withAuthenticator } from 'aws-amplify-react-native';
@@ -20,24 +19,23 @@ import { Images, articles, argonTheme } from './constants';
 import WithProvider from './WithProvider'
 import NavbarParts from './AmplifyPflegeheim/Arzt/ArztComponents/Navigation/NavbarParts'
 
-Amplify.configure(awsconfig);
 
 AWS.config.update({ region: 'eu-central-1' });
 
 
 
 AWS.config.update({ 
-accessKeyId: "AKIAXYA4IHKAQGOACKND",
-  secretAccessKey: "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", 
+accessKeyId: "AKIAXYA4IHKA5W7MRDNZ",
+  secretAccessKey: "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", 
 region: 'eu-central-1',
 
 });
 
 const myAppConfig = {
   // ...
-  'aws_appsync_graphqlEndpoint': 'https://7k4rildyrnhdvaaie662fe2k3i.appsync-api.eu-central-1.amazonaws.com/graphql',
-  'aws_appsync_region': 'eu-central-1',
-  "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
+  "aws_appsync_graphqlEndpoint": "https://7k4rildyrnhdvaaie662fe2k3i.appsync-api.eu-central-1.amazonaws.com/graphql",
+    "aws_appsync_region": "eu-central-1",
+    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
   // ...
 }
 
@@ -58,6 +56,9 @@ Amplify.configure({
     AWSS3: {
         bucket: 'paetzundpartnerweb9354bec955244b78aab125970c0808fc', //REQUIRED -  Amazon S3 bucket
         region: 'eu-central-1', //OPTIONAL -  Amazon service region
+    },
+    Analytics:{
+      disabled:true
     }
 }
 });

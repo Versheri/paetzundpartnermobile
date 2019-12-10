@@ -6,7 +6,7 @@ import { Block, theme } from 'galio-framework';
 import AWS from 'aws-sdk'
 import { API, graphqlOperation }  from "aws-amplify";
 import * as queries from '../../../graphql/queries';
-import * as mutations from '../../../graphql/mutations2';
+import * as mutations from '../../../graphql/mutations';
 import { TextInput, HelperText, Button } from 'react-native-paper';
 import * as Textdata from '../../../../Textfile'
 import { Dropdown } from 'react-native-material-dropdown';
@@ -15,6 +15,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import gql from 'graphql-tag';
 import { buildMutation } from 'aws-appsync';
 import DatePicker from 'react-native-datepicker'
+import { Banner, Card } from 'react-native-paper';
 
 const { width } = Dimensions.get('screen');
 
@@ -25,22 +26,22 @@ export default class AddPatient extends React.Component {
     username: "",
     groupenName: "Patient",
     password: '',
-    mail: "",
+    mail: " ",
     emailveri: "True",
     vorname:'',
     nachname:'',
-    telefonnummer:'',
+    telefonnummer:' ',
     strasse:'',
     hausnummer:'',
     postleitzahl:'',
     ort:'',
     pflegeheim:'',
-    pflegestufe:'',
-    zimmernummer:'',
+    pflegestufe:' ',
+    zimmernummer:' ',
     Arzt:[],
     Praxis:'',
     Formular:'1',
-    betreuer:'',
+    betreuer:'  ',
     LBetreuer:[],
     LPraxis:[],
     nutzer:[],
@@ -53,10 +54,13 @@ export default class AddPatient extends React.Component {
     checkthree:false,
     activeStep: 0,
     skipped: new Set(),
-    sex: '',
+    sex: '  ',
     DateofBirth: ' ',
     date:'',
-    Pflegeheim:""
+    Pflegeheim:"",
+    currentPflegeheim:"",
+    visible: false,
+    visible2: false
 };
 
 constructor(props) {
@@ -67,15 +71,32 @@ constructor(props) {
 }
 
 componentDidMount = async () => {
+  
+   const resultP = await API.graphql(graphqlOperation(queries.listPflegeheims))
 
-  this.setState({Pflegeheim: this.props.navigation.state.params.Pflegeheim}) 
+   var Neededheims=resultP.data.listPflegeheims.items.map((rest, i) => (rest.Pflegeheimid == this.props.navigation.state.params.Pflegeheim?
+    (rest):(null) ))
 
-console.warn("client3", this.props.navigation.state.params.Pflegeheim)
+    Neededheims = Neededheims.filter( Boolean );
+
+    this.setState({strasse: Neededheims.map((rest)=>rest.Strasse)[0]})
+    this.setState({ort: Neededheims.map((rest)=>rest.Ort)[0]})
+    this.setState({hausnummer: Neededheims.map((rest)=>rest.HausNr)[0]})
+    this.setState({postleitzahl: Neededheims.map((rest)=>rest.Postleitzahl)[0]})
+    this.setState({currentPflegeheim: Neededheims.map((rest)=>rest.Pflegeheimid)[0]})
+    this.setState({Pflegeheim: Neededheims.map((rest)=>rest.Name)[0]})
+
+    const Arzt = await API.graphql(graphqlOperation(queries.listArzts2))
+    this.setState({Arzt: Arzt.data.listArzts2.items})
+
+
+console.warn("client3", this.props.navigation.state.params.Pflegeheim, Neededheims)
+console.warn("client4",Arzt,  resultP, Neededheims.map((rest)=>rest.Strasse), Neededheims.map((rest)=>rest.Strasse)[0])
 
 this.getBetreuer();
 this.ListPraxis();
 this.ListPflegeheim();
-this.ListArzt();
+
 const result = await API.graphql(graphqlOperation(queries.listArzts))
 const result1 = await API.graphql(graphqlOperation(queries.listPatients))
 const result2 = await API.graphql(graphqlOperation(queries.listBetreuers))
@@ -102,29 +123,31 @@ const result6 = await API.graphql(graphqlOperation(queries.listPflegeheimPDLs))
 }
 
 listNutzer = async () => {
-this.setState({error: ""})
-this.setState({error1: ""})
-this.setState({error2: ""}) 
-API.graphql(graphqlOperation(queries.listPflegeheimPDLs))
-.then(() => {
-this.check1()
-})
-.then(()=>{
-  this.check2();
-}).then(()=>{
-  this.check3();
-})
-.then(()=>{
-  this.finalPush();
-  // console.log("check1", this.state.checkone, this.state.checktwo, this.state.checkthree)
-})      
+      
 }
 
 finalPush = async () =>  {
-if ( this.state.checkone == true && this.state.checktwo == true && this.state.checkthree == true) {
-// this.handleNext();
-this.all();
-} 
+  console.warn('vor', this.state.vorname)
+this.listNutzer()
+.then(()=>{if(this.state.vorname<1 || this.state.vorname==0){
+  this.setState({error: true})
+  console.warn('Error')
+} else{
+  this.setState({error: false})
+}
+if(this.state.nachname.length<1 || this.state.nachname.length==0){
+  this.setState({error1: true})
+  console.warn('Error1')
+}else{
+  this.setState({error1: false})
+}
+})
+.then(()=>{
+  if(this.state.error==true || this.state.error1==true){
+    null
+  } else{
+    this.all()
+  } })
 } 
 
 check1 = () => {
@@ -201,8 +224,10 @@ else this.setState({checkthree: true});
 }
 
 all = () => {
-    this.CreateUser()
-    .catch((err) => console.warn('err', err))
+  console.warn('Heheo')
+  this.CreatePatient()
+  .then(() => console.warn('Wowo') )
+  .then(() => this.props.navigation.push('Leistungen', {patientId: this.state.results} ))
 }
 
 getBetreuer = () => {
@@ -221,7 +246,10 @@ API.graphql(graphqlOperation(queries.listPflegeheims))
 };
 ListArzt = () => {
 API.graphql(graphqlOperation(queries.listArzts2))
-.then(data => this.setState({Arzt: data.data.listArzts2.items}))
+.then(data => {
+  this.setState({Arzt: data.data.listArzts2.items})
+  console.warn("Jomi", data.data.listArzts2.items)
+})
 
 };
 
@@ -313,46 +341,55 @@ CreateUser = async () => {
 }
 
 CreatePatient = async() => {
+  console.warn('Heheo2')
+
   const { navigation } = this.props;
   const client = navigation.getParam('client');
+  console.warn('Heheo3')
 
 const Arztname = this.state.Arzt.map((rest, i) => (rest.username))
 const ArztPraxis = this.state.Arzt.map((rest, i) => (rest.Praxis))
+
+var username= this.state.vorname + Math.random().toString(36).substring(2, 10)
+  console.warn('MathData2', username)
+
 this.setState({ open: false });
 
-const result = await client.mutate(buildMutation(client,
-  gql(mutations.createPatient2),{
-    inputType: gql(mutations.CreatePatientInput),
-    variables: {
-      input: {
-        Vorname: this.state.vorname,
-        Nachname: this.state.nachname,
-        username: this.state.username,
-        Betreuer: this.state.Betreuer,
-        Group: this.state.groupenName,
-        Email: this.state.mail,
-        Telefonnummer: this.state.telefonnummer,
-        Strasse: this.state.strasse,
-        Hausnr: this.state.hausnummer,
-        Postleitzahl: this.state.postleitzahl,
-        Ort: this.state.ort,
-        Pflegeheim: this.state.Pflegeheim,
-        Pflegestufe: this.state.pflegestufe,
-        Zimmernummr: this.state.zimmernummer,
-        Arzt: Arztname[0],
-        Praxis: ArztPraxis[0],
-        Zustand: "Aktiv",
-        Formular: '1',
-        sex: this.state.sex,
-	      DateofBirth: this.state.date,
-      }
-    }
-    },
-    _variables => [ gql(queries.listPatients) ],
-    'Patient'));
-  console.log( "success", result )
+    var beraterDetails = {
+      Vorname: this.state.vorname,
+      Nachname: this.state.nachname,
+      username: username,
+      Betreuer: this.state.Betreuer || ' ',
+      Group: this.state.groupenName,
+      Email: this.state.mail || ' ',
+      Telefonnummer: this.state.telefonnummer,
+      Strasse: this.state.strasse,
+      Hausnr: this.state.hausnummer,
+      Postleitzahl: this.state.postleitzahl,
+      Ort: this.state.ort,
+      Pflegeheim: this.state.currentPflegeheim,
+      Pflegestufe: this.state.pflegestufe || ' ',
+      Zimmernummr: this.state.zimmernummer || ' ',
+      Arzt: Arztname[0],
+      Praxis: ArztPraxis[0],
+      Zustand: "Aktiv",
+      Formular: '1',
+      sex: this.state.sex,
+      DateofBirth: this.state.date || ' ',
+      userId:' ',
+      Etage:' ',
+      Kostentraegerkennung:' ',
+      VersichertenNr:' ',
+      kzv:' ',
+      Krankenkasse:' '
+  }
+  console.warn('Heheo4', beraterDetails)
+   const result = await API.graphql(graphqlOperation(mutations.createPatient, {input: beraterDetails}))
+  
+  this.setState({ results: result.data.createPatient.id });
+  
 
-console.log("Data", result.data.createPatient.id)
+console.warn("Data", result.data.createPatient.id)
 this.setState({ results: result.data.createPatient.id });
 console.warn("result", this.state.results)
 //.then(()=>{window.location = `/PatientFilter/${this.state.results.data.createPatient.id}`;})
@@ -397,6 +434,8 @@ focusTextInput() {
     },
   ];
 
+  console.warn("Jarjar", Arzt)
+
       const Arztname = Arzt.map((rest, i) => (rest.username))
       const ArztPraxis = Arzt.map((rest, i) => (rest.Praxis))
 
@@ -422,56 +461,35 @@ focusTextInput() {
             }}
             keyboardDismissMode='on-drag'
             >
-        <TextInput 
-        ref={this.textInput}
+         <TextInput          
         style={{ backgroundColor: '#fafafa', borderRadius: 50, width: width }}
-        label='Nutzername'
-        error= {this.state.error && this.scroll.props.scrollToPosition(0, 0) && this.focusTextInput()}
-        value={username}
-        onChangeText={ (username) => this.setState({ username }) }
-         />
-         <HelperText
-          type="error"
-          visible={this.state.error}
-        >{this.state.error}</HelperText>
-         <TextInput          
-         style={{ backgroundColor: '#fafafa', borderRadius: 50, width: width }}
-        label='Email'
-        error= {this.state.error1}
-        value={mail}
-        onChangeText={ (mail) => this.setState({ mail }) }
-         />
-         <HelperText
-          type="error"
-          visible={this.state.error1}
-        >{this.state.error}</HelperText>
-         <TextInput          
-         style={{ backgroundColor: '#fafafa', borderRadius: 50, width: width }}
-        label='Passwort'
-        error= {this.state.error2}
-        value={password}
-        onChangeText={ (password) => this.setState({ password }) }
-         />
-         <HelperText
-          type="error"
-          visible={this.state.error2}
-        >{this.state.error}</HelperText>
-         <TextInput          
-         style={{ backgroundColor: '#fafafa', borderRadius: 50, width: width }}
         label='Vorname'
+        error= {this.state.error}
         value={vorname}
         onChangeText={ (vorname) => this.setState({ vorname }) }
          />
          <HelperText
           type="error"
-          visible={false}
-        ></HelperText>
+          value={'das feld darf nicht leer sein'}
+          visible={this.state.error}
+         ></HelperText>
          <TextInput         
+          style={{ backgroundColor: '#fafafa', borderRadius: 50, width: width }}
+          label='Nachname'
+          error= {this.state.error1}
+          value={nachname}
+          onChangeText={ (nachname) => this.setState({ nachname }) }
+          />
+         <HelperText
+          type="error"
+          value={'das feld darf nicht leer sein'}
+          visible={this.state.error1}
+        ></HelperText>
+        <TextInput          
          style={{ backgroundColor: '#fafafa', borderRadius: 50, width: width }}
-        label='Nachname'
-        value={nachname}
-        onChangeText={ (nachname) => this.setState({ nachname }) }
-         />
+        disabled
+        label={this.state.Pflegeheim}
+         /> 
          <HelperText
           type="error"
           visible={false}
@@ -487,17 +505,18 @@ focusTextInput() {
           visible={false}
         ></HelperText>
 
+  <Card
+  onPress={ () =>{ if(this.state.visible){
+    this.setState({ visible: false })
+  } else{this.setState({ visible: true })} }}
+  >
+    <Card.Actions>
+      <Button>Adresse</Button>
+    </Card.Actions>
+  </Card>
 
-         <TextInput          
-         style={{ backgroundColor: '#fafafa', borderRadius: 50, width: width }}
-        label='Telefonnummer'
-        value={telefonnummer}
-        onChangeText={ (telefonnummer) => this.setState({ telefonnummer }) }
-         />
-         <HelperText
-          type="error"
-          visible={false}
-        ></HelperText>
+  {this.state.visible &&
+          <>
          <TextInput          
          style={{ backgroundColor: '#fafafa', borderRadius: 50, width: width }}
         label='Strasse'
@@ -538,15 +557,43 @@ focusTextInput() {
           type="error"
           visible={false}
         ></HelperText>
-        <TextInput          
+</>
+}
+
+  <Card
+  onPress={ () =>{ if(this.state.visible2){
+    this.setState({ visible2: false })
+  } else{this.setState({ visible2: true })} }}>
+    <Card.Actions>
+
+      <Button>Weitere daten</Button>
+    </Card.Actions>
+  </Card>
+
+
+{this.state.visible2 &&
+<>
+<TextInput          
          style={{ backgroundColor: '#fafafa', borderRadius: 50, width: width }}
-        disabled
-        label={this.state.Pflegeheim}
-         /> 
+        label='Email'
+        value={mail}
+        onChangeText={ (mail) => this.setState({ mail }) }
+         />
+         <HelperText
+          type="error"
+          visible={false}
+        >{this.state.error}</HelperText>
+         <TextInput          
+         style={{ backgroundColor: '#fafafa', borderRadius: 50, width: width }}
+        label='Telefonnummer'
+        value={telefonnummer}
+        onChangeText={ (telefonnummer) => this.setState({ telefonnummer }) }
+         />
          <HelperText
           type="error"
           visible={false}
         ></HelperText>
+        
           <Dropdown
         label='Pflegestufe'
         value={pflegestufe}
@@ -623,14 +670,24 @@ focusTextInput() {
           type="error"
           visible={false}
         ></HelperText>
+      </> }
+
+        
         <View style={styles.container}>
-     <Button mode="contained" style={{ width: 200}} onPress={() => this.props.navigation.push('PatientTable')}>
+     <Button mode="contained" style={{ width: 200, marginTop:20, marginBottom:20, height:60}} onPress={() => this.props.navigation.push('PatientTable')}>
     Abbrechen
     </Button>
 
-    <Button mode="contained" style={{ width: 200}} onPress={this.listNutzer}>
+    <Button mode="contained" style={{ width: 200, marginTop:20, marginBottom:20, height:60}} onPress={() =>this.finalPush()}>
     Fertig
     </Button>
+
+    <HelperText
+    style={{height:120}}
+          type="error"
+          visible={true}
+        ></HelperText>
+
     </View>
        </KeyboardAwareScrollView>
            </Block>

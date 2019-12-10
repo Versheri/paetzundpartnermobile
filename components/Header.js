@@ -1,7 +1,7 @@
 import React from 'react';
 import { withNavigation } from 'react-navigation';
 import { TouchableOpacity, StyleSheet, Platform, Dimensions, Picker, TextInput } from 'react-native';
-import { Block, NavBar, Text, theme } from 'galio-framework';
+import { Block, NavBar, Text, theme } from 'react-native-paper';
 import { Button } from 'react-native-paper';
 import { DataTable, Card, Avatar, Searchbar, HelperText  } from 'react-native-paper';
 

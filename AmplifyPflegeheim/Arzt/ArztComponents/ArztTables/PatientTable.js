@@ -18,10 +18,10 @@ import SegmentedControlTab from "react-native-segmented-control-tab";
 import AWSAppSyncClient, { buildSubscription } from 'aws-appsync';
 import { ApolloProvider } from "react-apollo";
 import { Rehydrated, graphqlMutation } from "aws-appsync-react";
-import AppSyncConfig from "../../../../aws-exports";
+import AppSyncConfig from "../../../../exports2";
 import gql from 'graphql-tag';
 import { buildMutation } from 'aws-appsync';
-import aws_config from '../../../../aws-exports'
+import aws_config from '../../../../exports2'
 import TouchableSwipe from 'react-native-touchable-swipe'
 
 const { width } = Dimensions.get('screen');
@@ -128,6 +128,8 @@ componentDidMount = async () => {
    }
 
    EndFilter = async (value) => {
+
+    console.warn('valooos', value)
 
     var ListPatient = this.state.Zerostate.map((rest) => (
       rest.Pflegeheim == value ? (
@@ -527,7 +529,8 @@ componentDidMount = async () => {
     let Pflegeunits = [
       ...this.state.Pflegeheimes.map((rest, i) => (
         {
-         value: rest.Name
+         value: rest.Pflegeheimid,
+         label:rest.Name,
         }
       ))
     ];
@@ -546,7 +549,7 @@ componentDidMount = async () => {
               label='Pflegeheim'
               value={Pflegeheim}
               style={{ width: 60 }}
-              onChangeText={ (Pflegeheim) => this.EndFilter(Pflegeheim) }
+              onChangeText={ (Pflegeheim) => {console.warn('valooos2', Pflegeheim);this.EndFilter(Pflegeheim)} }
               data={Pflegeunits}
               />
           </>

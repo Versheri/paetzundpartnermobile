@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import ListEintraege from './ListEintraege';
 import { TextInput, Text, HelperText, FAB, DataTable, Button, IconButton, Headline, Dialog, Avatar, Card, Title, Paragraph, Portal, Provider } from 'react-native-paper';
 import { API, Storage, Auth, graphqlOperation }  from "aws-amplify";
-import aws_exports from '../../../../aws-exports'
+import aws_exports from '../../../../exports2'
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
@@ -43,7 +43,7 @@ const initialState = {
   showEintrag: true,
   showLeistung: true,
   showPflegeheime: false,
-  pass: 'Praxis',
+  pass: 'Initial',
   Pflegeheimes: [],
   PflegeheimN:'',
   today:'',
@@ -211,6 +211,13 @@ ListRecords6 = ListRecords6.filter( Boolean );
     
       } else{this.CheckForremnants()
         .catch((err)=> console.warn('ERROR', err))}
+
+
+        if(this.state.pass=='Initial'){
+          this.setState({ showEintrag: false })
+          this.setState({ showPflegeheime: false })
+          this.setState({ showLeistung: false })
+        }
 
 
 
@@ -838,6 +845,11 @@ Start = (value) => {
   this.setState({ showLeistung: true })
   this.setState({ pass: 'Praxis' })
 
+  } else if(value == 'PraxisKomm'){
+    this.setState({ showEintrag: true })
+    this.setState({ showLeistung: true })
+    this.setState({ pass: 'PraxisKomm' })
+  
   } else {
     this.setState({ showEintrag: true })
   this.setState({ showLeistung: true })
@@ -1309,7 +1321,8 @@ this.setState({
     let Pflegeunits = [
       ...this.state.Pflegeheimes.map((rest, i) => (
         {
-         value: rest.Name
+          value: rest.Pflegeheimid,
+          label:rest.Name,
         }
       ))
     ];
@@ -1358,6 +1371,7 @@ this.setState({
            <Button onPress = {() => this.Start('Zuhause')}>von Zuhause</Button>
            <Button onPress = {() => this.Start('Pflegeheim')}>vom Pflegeheim</Button>
            <Button onPress = {() => this.Start('Praxis')}>Bin in der Praxis</Button>
+           <Button onPress = {() => this.Start('PraxisKomm')}>Komme von der Praxis</Button>
            </>
            }
 
@@ -1389,6 +1403,9 @@ this.setState({
             }
             {this.state.pass=='Praxis' &&
             <Button onPress={()=>this.showorigin()}>Du bist in der Praxis (Ändern)</Button>
+            }
+            {this.state.pass=='PraxisKomm' &&
+            <Button onPress={()=>this.showorigin()}>Du kommst von der Praxis</Button>
             }
             <Card.Content style={{backgroundColor: '#ffffff', width: width}}>
                 <Title style={{ alignSelf: 'right' }}>{this.state.SessionList+ " " + this.state.ListRecords}</Title>

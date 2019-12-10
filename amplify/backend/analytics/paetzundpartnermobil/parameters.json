@@ -1,0 +1,20 @@
+{
+    "appName": "paetzundpartnermobil",
+    "roleName": "pinpointLambdaRole02e08a14",
+    "cloudWatchPolicyName": "cloudWatchPolicy02e08a14",
+    "pinpointPolicyName": "pinpointPolicy02e08a14",
+    "authPolicyName": "pinpoint_amplify_02e08a14",
+    "unauthPolicyName": "pinpoint_amplify_02e08a14",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

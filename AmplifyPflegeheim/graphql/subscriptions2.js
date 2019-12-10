@@ -195,6 +195,39 @@ export const onCreateOrDeleteOrEditPraxisGeschaeftsfuerung = `subscription onCre
 }
 `;
 
+export const onCreateOrDeleteOrEditPraxisMitarbeiter = `subscription onCreateOrDeleteOrEditPraxisMitarbeiter {
+  onCreatePraxisMitarbeiter {
+    id
+    Vorname
+    Nachname
+    Telefonnummer
+    Email
+    Zustand
+    BetriebsstaettenNr
+    Praxis
+    Formular
+    userId
+    username
+    Group
+  },
+  onDeletePraxisMitarbeiter {
+    id
+    Vorname
+    Nachname
+    BetriebsstaettenNr
+    Telefonnummer
+    Email
+    Zustand
+    Praxis
+    Formular
+    userId
+    username
+    Group
+  }
+
+}
+`;
+
 
 
 

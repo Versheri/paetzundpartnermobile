@@ -19,10 +19,10 @@ import SegmentedControlTab from "react-native-segmented-control-tab";
 import AWSAppSyncClient, { buildSubscription } from 'aws-appsync';
 import { ApolloProvider } from "react-apollo";
 import { Rehydrated, graphqlMutation } from "aws-appsync-react";
-import AppSyncConfig from "../../../../aws-exports";
+import AppSyncConfig from "../../../../exports2";
 import gql from 'graphql-tag';
 import { buildMutation } from 'aws-appsync';
-import aws_config from '../../../../aws-exports'
+import aws_config from '../../../../exports2'
 import TouchableSwipe from 'react-native-touchable-swipe'
 import { Storage } from 'aws-amplify';
 import { Audio } from 'expo-av';

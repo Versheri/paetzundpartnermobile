@@ -6,7 +6,7 @@ import {
   createAppContainer
 } from "react-navigation";
 
-import { Block } from "galio-framework";
+import { Block } from 'react-native-paper';
 
 // screens
 import Home from "../screens/Home";

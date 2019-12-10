@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Font from 'expo-font';
 import { createIconSetFromIcoMoon } from '@expo/vector-icons';
-import { Icon } from 'galio-framework';
+import { Icon } from 'react-native-paper';
 
 import argonConfig from '../assets/font/argon.json';
 const ArgonExtra = require('../assets/font/argon.ttf');

@@ -10,7 +10,7 @@ import * as queries from '../../../../graphql/queries';
 import * as mutations from '../../../../graphql/mutations';
 import * as mutations2 from '../../../../graphql/mutations2';
 import { createRecords } from '../../../../graphql/mutations';
-import aws_exports from '../../../../../aws-exports'
+import aws_exports from '../../../../../exports2'
 import * as ImagePicker from 'expo-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Dropdown } from 'react-native-material-dropdown';
@@ -19,7 +19,10 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import gql from 'graphql-tag';
 import { buildMutation } from 'aws-appsync';
 
+
+
 const { width } = Dimensions.get('screen');
+
 
 const initialState = {
     patient: "",
@@ -128,7 +131,19 @@ export default class AddKette extends React.Component {
     this.setState({Arzt: data.data.listArzts2.items})
 
 const leistungsquery = await API.graphql(graphqlOperation(queries.listLeistungsKettes))
-    this.setState({Kettendata: leistungsquery.data.listLeistungsKettes.items})
+
+var ListPatient = leistungsquery.data.listLeistungsKettes.items.map((rest) => (
+  data.data.listArzts2.items.map((rest)=>rest.Praxis) == rest.Praxis ||
+  'Admin' == rest.Praxis ? (
+    rest
+    ):
+    (
+      null
+    )))
+
+ListPatient = ListPatient.filter( Boolean );
+
+this.setState({Kettendata: ListPatient})
   
 }
 
@@ -161,7 +176,7 @@ ListLeistungen = async () => {
   rest.Volgebehandlung == 'Volgebehandlung' ? (
     rest.name
     ): null
-))
+  ))
 
 ListPatient2 = ListPatient2.filter( Boolean );
 
@@ -294,7 +309,7 @@ toggleModal = () => {
 
   Batch(){
     // console.warn('Behand', this.state.Behandlung)
-    // consoleBatch.warn('ExtraBehand', this.state.ExtraBehandlungen)
+    // console.warn('ExtraBehand', this.state.ExtraBehandlungen)
     const Kette = this.state.Kettendata.map((rest, i) => (rest.Name))
     const file = {
     key: "-",
@@ -566,7 +581,65 @@ toggleModal = () => {
         console.log( "success", result )
 
           
-      } else if( this.state.pass == 'Praxis'){
+      }
+      else if( this.state.pass == 'PraxisKomm'){
+
+        var dates = new Date().getDate()
+        var month = new Date().getMonth() + 1; //Current Month
+        var year = new Date().getFullYear(); //Current Year
+
+        var Arztid = this.state.Arzt.map((rest)=>( rest.id))
+        var date = dates + '/' + month + '/' + year
+        var Praxis = this.state.Arzt.map((rest)=>( rest.Praxis))
+
+        var ListPatient = this.state.Distanz.map((rest) => (
+          (rest.Start.includes(PflegeheimN) || rest.Ende.includes(PflegeheimN))
+          &&
+         ( rest.Start.includes(Praxis) || rest.Ende.includes(Praxis) )? (
+           rest
+           ): null
+       ))
+      
+       ListPatient = ListPatient.filter( Boolean );
+        console.warn('Distanz', ListPatient)
+
+        var Hour = new Date().getHours();
+  var Minutes = new Date().getMinutes();
+
+  if((Hour>= 20 && Minutes>=1) || (Hour<8 && Minutes>=0)){
+    var Distanzo = Number(ListPatient.map((rest, i) => (rest.Distanz)))+1
+    var Distanz = Distanzo.toString()
+  } else {
+    var Distanzo = ListPatient.map((rest, i) => (rest.Distanz))
+ var Distanz = Distanzo[0]
+ console.warn('Hello', Distanzo, Distanz)
+  }
+
+        var Track = ListPatient.map((rest, i) => (
+          {ArztId: Arztid[0], PatientId: this.state.patientId,
+            Date: this.state.selectedDate, 
+              Session: this.state.SessionList, 
+              SessionTime: this.state.ListRecords, Number: "1",
+            Praxis: Praxis[0],
+            distanz: Distanz, end: rest.Ende, start: rest.Start,
+            Leistung: this.state.results,
+            ids: [this.state.results]}
+        ))
+        console.warn('Track', Track)
+        const Tracks = Track[0]
+
+        const result = await API.graphql(graphqlOperation(mutations2.createTracking, {input: Tracks}))
+        console.log( "success", result )
+
+        this.props.navigation.push('Leistungen', {patientId: this.props.navigation.state.params.patientId,
+          client: this.props.navigation.state.params.client,
+          Pflegeheim: this.state.Pflegeheim,
+          PflegeheimN: this.state.PflegeheimN,
+          pass: this.props.navigation.state.params.pass,
+          selectedDate: this.state.selectedDate, SessionList:this.state.SessionList, ListRecords:this.state.ListRecords})
+          
+      }
+       else if( this.state.pass == 'Praxis'){
         
         
         this.props.navigation.push('Leistungen', {patientId: this.props.navigation.state.params.patientId,

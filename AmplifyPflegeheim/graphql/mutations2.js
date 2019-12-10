@@ -1,3 +1,4 @@
+
 export const createPatient2 = `mutation CreatePatient2($input: CreatePatientInput!) {
   createPatient(input: $input) {
     id
@@ -64,6 +65,7 @@ export const createOffeneVolgebehandlung = `mutation CreateOffeneVolgebehandlung
    datum
    Session
    SessionTime
+   userId
   }
 }
 `;
@@ -82,6 +84,7 @@ export const updateOffeneVolgebehandlung = `mutation UpdateOffeneVolgebehandlung
    datum
    Session
    SessionTime
+   userId
   }
 }
 `;
@@ -100,6 +103,7 @@ export const createOffeneVolgebehandlung2 = `mutation CreateOffeneVolgebehandlun
     datum
     Session
     SessionTime
+    userId
   }
 }
 `;
@@ -521,7 +525,4 @@ export const CreateRecordsInput = `input CreateRecordsInput {
   Access:[String]
   createdAt: String
   updatedAt: String
-  abrechnungsnummerprivat: String
-  abrechnungsnummergesaetzlich: String
-  Leistungskette: String
 }`;

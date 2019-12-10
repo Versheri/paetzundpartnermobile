@@ -6,7 +6,7 @@ import {
   StatusBar,
   Dimensions
 } from "react-native";
-import { Block, Button, Text, theme } from "galio-framework";
+import { Block, Button, Text, theme } from 'react-native-paper';
 
 const { height, width } = Dimensions.get("screen");
 

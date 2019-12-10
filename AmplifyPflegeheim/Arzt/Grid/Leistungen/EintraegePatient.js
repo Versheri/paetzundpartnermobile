@@ -4,7 +4,7 @@ import { Constants } from 'expo';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import { Block, theme } from 'galio-framework';
 import { API, Storage, Auth, graphqlOperation }  from "aws-amplify";
-import aws_exports from '../../../../aws-exports'
+import aws_exports from '../../../../exports2'
 import {createRecords} from '../../../graphql/mutations';
 import { TextInput, HelperText, FAB, Button, IconButton, Headline, Dialog, Avatar, Card, Title, Paragraph, Portal, Provider } from 'react-native-paper';
 import * as Permissions from 'expo-permissions';

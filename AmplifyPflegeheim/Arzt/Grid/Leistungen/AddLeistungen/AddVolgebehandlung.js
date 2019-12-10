@@ -10,7 +10,7 @@ import * as queries from '../../../../graphql/queries';
 import * as mutations from '../../../../graphql/mutations';
 import * as mutations2 from '../../../../graphql/mutations2';
 import { createRecords } from '../../../../graphql/mutations';
-import aws_exports from '../../../../../aws-exports'
+import aws_exports from '../../../../../exports2'
 import * as ImagePicker from 'expo-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Dropdown } from 'react-native-material-dropdown';
@@ -51,8 +51,8 @@ const initialState = {
     BildKe: [],
     Kettendata: [],
     showfilteredkette: false,
-    ExtraVolgeBehandlungen: [],
-    ExtraVolg: "",
+    ExtraBehandlungen: [],
+    Extra: "",
     TypValue: [],
     Kette: " ",
     accessed: false,
@@ -161,19 +161,19 @@ this.ListLeistungen()
 
 
 
-  AddToVolgeList (){
-    if(this.state.ExtraVolg == "" || this.state.ExtraVolg == " " || this.state.ExtraVolg == null){
+  AddToList (){
+    if(this.state.Extra == "" || this.state.Extra == " " || this.state.Extra == null){
         null
     } else{
-    var newArray = this.state.ExtraVolgeBehandlungen.slice();    
-    newArray.push(this.state.ExtraVolg);   
-    this.setState({ExtraVolgebehandlungen : newArray})
-    console.warn("hello value", this.state.ExtraVolgeBehandlungen)
-    this.setState({ ExtraVolg: "" })
+    var newArray = this.state.ExtraBehandlungen.slice();    
+    newArray.push(this.state.Extra);   
+    this.setState({ExtraBehandlungen : newArray})
+    console.warn("hello value", this.state.ExtraBehandlungen)
+    this.setState({ Extra: "" })
     }
   };
 
-  ClearVolgeBehandlungen = async (value) => {
+  ClearBehandlungen = async (value) => {
     
     var ListRecords = this.state.Volgebehandlungen.map((rest) => (
         rest.Name.includes(value) ? (
@@ -191,9 +191,9 @@ this.ListLeistungen()
 
 }
 
-ClearExtraVolgeBehandlungen = async (value) => {
+ClearExtraBehandlungen = async (value) => {
     
-    var ListRecords = this.state.ExtraVolgeBehandlungen.map((rest) => (
+    var ListRecords = this.state.ExtraBehandlungen.map((rest) => (
         rest.includes(value) ? (
             null
           ): (
@@ -204,7 +204,7 @@ ClearExtraVolgeBehandlungen = async (value) => {
       ListRecords = ListRecords.filter( Boolean );
 
       this.setState({
-        ExtraVolgeBehandlungen:  ListRecords
+        ExtraBehandlungen:  ListRecords
       })
 
 }
@@ -214,9 +214,9 @@ toggleModal = () => {
   };
 
 
-  BatchVolg(){
+  Batch(){
     // console.warn('Behand', this.state.Volgebehandlungen)
-    // console.warn('ExtraBehand', this.state.ExtraVolgeBehandlungen)
+    // console.warn('ExtraBehand', this.state.ExtraBehandlungen)
 
     console.warn('Arzt', this.state.Arzt)
       const Arztu =this.state.Arzt.map((rest)=>( rest.username))
@@ -240,7 +240,7 @@ toggleModal = () => {
     console.warn("Dates", Date.now(), date)
     console.warn("con", year+ '-' + month + '-' + date)
     
-    if (this.state.Volgebehandlungen != "" && this.state.ExtraVolgeBehandlungen != "" ){
+    if (this.state.Volgebehandlungen != "" && this.state.ExtraBehandlungen != "" ){
     
     const Behand = this.state.Volgebehandlungen.map((rest, i) => (
                                                               { Name: rest.Name, 
@@ -255,7 +255,7 @@ toggleModal = () => {
                                                                 Session: this.state.SessionList, 
                                                                 SessionTime: this.state.ListRecords}
                                                           ))
-     var ExtraBehand = this.state.ExtraVolgeBehandlungen.map((behand, i) => (
+     var ExtraBehand = this.state.ExtraBehandlungen.map((behand, i) => (
                                                                       {Name: behand, 
                                                                         patientId: this.state.patientId,
                                                                         arztId: Arztu[0], 
@@ -278,9 +278,9 @@ toggleModal = () => {
     console.warn('Behandsoo3', Behand)
     console.warn('muai')
     console.warn('muchos', newArray)
-    } else if(this.state.Volgebehandlungen == "" && this.state.ExtraVolgeBehandlungen == ""){
+    } else if(this.state.Volgebehandlungen == "" && this.state.ExtraBehandlungen == ""){
     console.warn('welldone')
-    } else if(this.state.Volgebehandlungen != "" && this.state.ExtraVolgeBehandlungen == ""){
+    } else if(this.state.Volgebehandlungen != "" && this.state.ExtraBehandlungen == ""){
     
     const Behand = [this.state.Volgebehandlungen.map((rest, i) => (
         { Name: rest.Name, 
@@ -303,9 +303,9 @@ toggleModal = () => {
       console.warn('Behandsoo2', Bass)
       console.warn('Behandsoo3', Behand)
     console.warn('well')
-    } else if(this.state.Volgebehandlungen == "" && this.state.ExtraVolgeBehandlungen != ""){
+    } else if(this.state.Volgebehandlungen == "" && this.state.ExtraBehandlungen != ""){
     
-    const Behand = [this.state.ExtraVolgeBehandlungen.map((behand, i) => (
+    const Behand = [this.state.ExtraBehandlungen.map((behand, i) => (
         {Name: behand, 
             patientId: this.state.patientId,
             arztId: Arztu[0], 
@@ -330,7 +330,7 @@ toggleModal = () => {
     }
     }
 
-    BatchaddVolgRecords = async () => {
+    BatchaddRecords = async () => {
 
       const file = {
         key: "-",
@@ -379,8 +379,8 @@ toggleModal = () => {
     BatchProcess() {
     
     API.graphql(graphqlOperation(queries.listArzts2))
-    .then(()=> this.BatchVolg())
-    .then(()=> this.BatchaddVolgRecords())
+    .then(()=> this.Batch())
+    .then(()=> this.BatchaddRecords())
     
     }
 
@@ -390,8 +390,8 @@ toggleModal = () => {
 
 
       API.graphql(graphqlOperation(queries.listArzts2))
-      .then(()=> this.BatchVolg())
-      .then(()=> this.BatchaddVolgRecords())
+      .then(()=> this.Batch())
+      .then(()=> this.BatchaddRecords())
       .catch((err)=> console.warn('err1', err))
       .catch((err)=> console.warn('err12', err))
       .then(()=> this.props.navigation.push('Leistungen', {patientId: this.props.navigation.state.params.patientId,
@@ -405,7 +405,7 @@ toggleModal = () => {
       }
       
   render() {
-    const { Record, ExtraVolg, Kette, TypValue, patientId, Volgebehandlungen } = this.state;
+    const { Record, Extra, Kette, TypValue, patientId, Volgebehandlungen } = this.state;
 
     console.warn('handlungen', this.state.Volgebehandlungen)
 
@@ -429,7 +429,7 @@ toggleModal = () => {
 
                 <View style={styles.parent}>
 
-                { this.state.ExtraVolgeBehandlungen.map((behand, i) => ( 
+                { this.state.ExtraBehandlungen.map((behand, i) => ( 
                 <FlatList
                 data={[{key: behand}]}
                 numColumns={2}
@@ -484,8 +484,8 @@ toggleModal = () => {
                 label="Eintrag"
                 multiline
                 mode='outlined'
-                value= {ExtraVolg}
-                onChangeText={ (ExtraVolg) => this.setState({ ExtraVolg }) }
+                value= {Extra}
+                onChangeText={ (Extra) => this.setState({ Extra }) }
                 /> 
                 <HelperText
             type="error"

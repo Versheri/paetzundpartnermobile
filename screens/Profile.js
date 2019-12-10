@@ -7,7 +7,7 @@ import {
   ImageBackground,
   Platform
 } from "react-native";
-import { Block, Text, theme } from "galio-framework";
+import { Block, Text, theme } from 'react-native-paper';
 
 import { Button } from "../components";
 import { Images, argonTheme } from "../constants";

@@ -7,7 +7,7 @@ import { API, graphqlOperation }  from "aws-amplify";
 import { Image, TouchableWithoutFeedback, Keyboard, Text  } from 'react-native';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
-import { Block, GalioProvider } from 'galio-framework';
+import { Block, GalioProvider } from 'react-native-paper';
 import { DataTable, Card, Avatar, Searchbar, HelperText, Button  } from 'react-native-paper';
 
 import Auth from '@aws-amplify/auth';

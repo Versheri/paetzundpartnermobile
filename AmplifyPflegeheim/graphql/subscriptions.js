@@ -1,69 +1,75 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
-export const onCreateArzt = `subscription OnCreateArzt {
-  onCreateArzt {
+export const onCreateAbbrechnung = `subscription OnCreateAbbrechnung {
+  onCreateAbbrechnung {
     id
-    Vorname
-    Nachname
-    Arztnr
-    BetriebsstaettenNr
-    Strasse
-    Hausnr
-    Ort
-    Postleitzahl
-    Telefonnummer
-    Email
-    Zustand
-    Praxis
-    Formular
-    userId
-    username
-    Group
+    Typ
+    Eintrag
+    Kette
+    patient
+    arzt
+    createdAt
+    filetype
+    Ketteninhalt
+    bild {
+      bucket
+      region
+      key
+    }
+    audio {
+      bucket
+      region
+      key
+    }
   }
 }
 `;
-export const onUpdateArzt = `subscription OnUpdateArzt {
-  onUpdateArzt {
+export const onUpdateAbbrechnung = `subscription OnUpdateAbbrechnung {
+  onUpdateAbbrechnung {
     id
-    Vorname
-    Nachname
-    Arztnr
-    BetriebsstaettenNr
-    Strasse
-    Hausnr
-    Ort
-    Postleitzahl
-    Telefonnummer
-    Email
-    Zustand
-    Praxis
-    Formular
-    userId
-    username
-    Group
+    Typ
+    Eintrag
+    Kette
+    patient
+    arzt
+    createdAt
+    filetype
+    Ketteninhalt
+    bild {
+      bucket
+      region
+      key
+    }
+    audio {
+      bucket
+      region
+      key
+    }
   }
 }
 `;
-export const onDeleteArzt = `subscription OnDeleteArzt {
-  onDeleteArzt {
+export const onDeleteAbbrechnung = `subscription OnDeleteAbbrechnung {
+  onDeleteAbbrechnung {
     id
-    Vorname
-    Nachname
-    Arztnr
-    BetriebsstaettenNr
-    Strasse
-    Hausnr
-    Ort
-    Postleitzahl
-    Telefonnummer
-    Email
-    Zustand
-    Praxis
-    Formular
-    userId
-    username
-    Group
+    Typ
+    Eintrag
+    Kette
+    patient
+    arzt
+    createdAt
+    filetype
+    Ketteninhalt
+    bild {
+      bucket
+      region
+      key
+    }
+    audio {
+      bucket
+      region
+      key
+    }
   }
 }
 `;
@@ -100,6 +106,123 @@ export const onDeleteAdministrator = `subscription OnDeleteAdministrator {
     userId
     Group
     Formular
+  }
+}
+`;
+export const onCreateArzt = `subscription OnCreateArzt {
+  onCreateArzt {
+    id
+    Vorname
+    Arztnr
+    BetriebsstaettenNr
+    Nachname
+    Telefonnummer
+    Email
+    Zustand
+    Strasse
+    Hausnr
+    Ort
+    Postleitzahl
+    Praxis
+    Formular
+    userId
+    username
+    Group
+  }
+}
+`;
+export const onUpdateArzt = `subscription OnUpdateArzt {
+  onUpdateArzt {
+    id
+    Vorname
+    Arztnr
+    BetriebsstaettenNr
+    Nachname
+    Telefonnummer
+    Email
+    Zustand
+    Strasse
+    Hausnr
+    Ort
+    Postleitzahl
+    Praxis
+    Formular
+    userId
+    username
+    Group
+  }
+}
+`;
+export const onDeleteArzt = `subscription OnDeleteArzt {
+  onDeleteArzt {
+    id
+    Vorname
+    Arztnr
+    BetriebsstaettenNr
+    Nachname
+    Telefonnummer
+    Email
+    Zustand
+    Strasse
+    Hausnr
+    Ort
+    Postleitzahl
+    Praxis
+    Formular
+    userId
+    username
+    Group
+  }
+}
+`;
+export const onCreateBehandlungen = `subscription OnCreateBehandlungen {
+  onCreateBehandlungen {
+    id
+    name
+    Kuerzel
+    Arzt
+    ArztName
+    Patient
+    PatientName
+    abrechnungsnummerprivat
+    abrechnungsnummergesaetzlich
+    Volgebehandlung
+    createdAt
+    Kette
+  }
+}
+`;
+export const onUpdateBehandlungen = `subscription OnUpdateBehandlungen {
+  onUpdateBehandlungen {
+    id
+    name
+    Kuerzel
+    Arzt
+    ArztName
+    Patient
+    PatientName
+    abrechnungsnummerprivat
+    abrechnungsnummergesaetzlich
+    Volgebehandlung
+    createdAt
+    Kette
+  }
+}
+`;
+export const onDeleteBehandlungen = `subscription OnDeleteBehandlungen {
+  onDeleteBehandlungen {
+    id
+    name
+    Kuerzel
+    Arzt
+    ArztName
+    Patient
+    PatientName
+    abrechnungsnummerprivat
+    abrechnungsnummergesaetzlich
+    Volgebehandlung
+    createdAt
+    Kette
   }
 }
 `;
@@ -163,17 +286,187 @@ export const onDeleteBetreuer = `subscription OnDeleteBetreuer {
   }
 }
 `;
+export const onCreateDistanzen = `subscription OnCreateDistanzen {
+  onCreateDistanzen {
+    id
+    Start
+    Ende
+    Distanz
+  }
+}
+`;
+export const onUpdateDistanzen = `subscription OnUpdateDistanzen {
+  onUpdateDistanzen {
+    id
+    Start
+    Ende
+    Distanz
+  }
+}
+`;
+export const onDeleteDistanzen = `subscription OnDeleteDistanzen {
+  onDeleteDistanzen {
+    id
+    Start
+    Ende
+    Distanz
+  }
+}
+`;
+export const onCreateKrankenKassen = `subscription OnCreateKrankenKassen {
+  onCreateKrankenKassen {
+    id
+    kgruppe
+    kzv
+    knummer
+    abrstelle
+    kart
+    kblock
+    abrflags
+    kname
+    kplz
+    kort
+    kstrasse
+    ktelefon
+    ktelefax
+    ksuchname
+  }
+}
+`;
+export const onUpdateKrankenKassen = `subscription OnUpdateKrankenKassen {
+  onUpdateKrankenKassen {
+    id
+    kgruppe
+    kzv
+    knummer
+    abrstelle
+    kart
+    kblock
+    abrflags
+    kname
+    kplz
+    kort
+    kstrasse
+    ktelefon
+    ktelefax
+    ksuchname
+  }
+}
+`;
+export const onDeleteKrankenKassen = `subscription OnDeleteKrankenKassen {
+  onDeleteKrankenKassen {
+    id
+    kgruppe
+    kzv
+    knummer
+    abrstelle
+    kart
+    kblock
+    abrflags
+    kname
+    kplz
+    kort
+    kstrasse
+    ktelefon
+    ktelefax
+    ksuchname
+  }
+}
+`;
+export const onCreateLeistungsKette = `subscription OnCreateLeistungsKette {
+  onCreateLeistungsKette {
+    id
+    Name
+    Typ
+    Praxis
+  }
+}
+`;
+export const onUpdateLeistungsKette = `subscription OnUpdateLeistungsKette {
+  onUpdateLeistungsKette {
+    id
+    Name
+    Typ
+    Praxis
+  }
+}
+`;
+export const onDeleteLeistungsKette = `subscription OnDeleteLeistungsKette {
+  onDeleteLeistungsKette {
+    id
+    Name
+    Typ
+    Praxis
+  }
+}
+`;
+export const onCreateOffeneVolgebehandlung = `subscription OnCreateOffeneVolgebehandlung {
+  onCreateOffeneVolgebehandlung {
+    id
+    Leistungsname
+    Name
+    abrechnungsnummerprivat
+    abrechnungsnummergesaetzlich
+    Leistungskette
+    Status
+    Session
+    SessionTime
+    patientId
+    arztId
+    datum
+    userId
+  }
+}
+`;
+export const onUpdateOffeneVolgebehandlung = `subscription OnUpdateOffeneVolgebehandlung {
+  onUpdateOffeneVolgebehandlung {
+    id
+    Leistungsname
+    Name
+    abrechnungsnummerprivat
+    abrechnungsnummergesaetzlich
+    Leistungskette
+    Status
+    Session
+    SessionTime
+    patientId
+    arztId
+    datum
+    userId
+  }
+}
+`;
+export const onDeleteOffeneVolgebehandlung = `subscription OnDeleteOffeneVolgebehandlung {
+  onDeleteOffeneVolgebehandlung {
+    id
+    Leistungsname
+    Name
+    abrechnungsnummerprivat
+    abrechnungsnummergesaetzlich
+    Leistungskette
+    Status
+    Session
+    SessionTime
+    patientId
+    arztId
+    datum
+    userId
+  }
+}
+`;
 export const onCreatePatient = `subscription OnCreatePatient {
   onCreatePatient {
     id
     Vorname
-    kzv
     Nachname
+    Krankenkasse
+    createdAt
+    kzv
     VersichertenNr
-	  Kostentraegerkennung
-    Strasse
+    Kostentraegerkennung
     sex
-	  DateofBirth
+    DateofBirth
+    Strasse
     Hausnr
     Ort
     Postleitzahl
@@ -197,14 +490,16 @@ export const onCreatePatient = `subscription OnCreatePatient {
 export const onUpdatePatient = `subscription OnUpdatePatient {
   onUpdatePatient {
     id
-    kzv
     Vorname
     Nachname
-    Strasse
+    Krankenkasse
+    createdAt
+    kzv
     VersichertenNr
-	  Kostentraegerkennung
+    Kostentraegerkennung
     sex
-	  DateofBirth
+    DateofBirth
+    Strasse
     Hausnr
     Ort
     Postleitzahl
@@ -228,13 +523,15 @@ export const onUpdatePatient = `subscription OnUpdatePatient {
 export const onDeletePatient = `subscription OnDeletePatient {
   onDeletePatient {
     id
-    kzv
     Vorname
     Nachname
+    Krankenkasse
+    createdAt
+    kzv
     VersichertenNr
-	  Kostentraegerkennung
+    Kostentraegerkennung
     sex
-	  DateofBirth
+    DateofBirth
     Strasse
     Hausnr
     Ort
@@ -256,168 +553,12 @@ export const onDeletePatient = `subscription OnDeletePatient {
   }
 }
 `;
-export const onCreatePraxisMitarbeiter = `subscription OnCreatePraxisMitarbeiter {
-  onCreatePraxisMitarbeiter {
-    id
-    Vorname
-    Nachname
-    Telefonnummer
-    BetriebsstaettenNr
-    Email
-    Zustand
-    Praxis
-    Formular
-    userId
-    username
-    Group
-  }
-}
-`;
-export const onUpdatePraxisMitarbeiter = `subscription OnUpdatePraxisMitarbeiter {
-  onUpdatePraxisMitarbeiter {
-    id
-    Vorname
-    Nachname
-    Telefonnummer
-    BetriebsstaettenNr
-    Email
-    Zustand
-    Praxis
-    Formular
-    userId
-    username
-    Group
-  }
-}
-`;
-export const onDeletePraxisMitarbeiter = `subscription OnDeletePraxisMitarbeiter {
-  onDeletePraxisMitarbeiter {
-    id
-    Vorname
-    Nachname
-    Telefonnummer
-    BetriebsstaettenNr
-    Email
-    Zustand
-    Praxis
-    Formular
-    userId
-    username
-    Group
-  }
-}
-`;
-export const onCreatePraxis = `subscription OnCreatePraxis {
-  onCreatePraxis {
-    id
-    Strasse
-    Name
-    HausNr
-    Postleitzahl
-    Praxisid
-    BetriebsstaettenNr
-    Ort
-    Telefonnummer
-    Email
-    HausAufteilung
-    Etagen
-    Zimmernummer
-  }
-}
-`;
-export const onUpdatePraxis = `subscription OnUpdatePraxis {
-  onUpdatePraxis {
-    id
-    Strasse
-    Name
-    HausNr
-    Postleitzahl
-    BetriebsstaettenNr
-    Praxisid
-    Ort
-    Telefonnummer
-    Email
-    HausAufteilung
-    Etagen
-    Zimmernummer
-  }
-}
-`;
-export const onDeletePraxis = `subscription OnDeletePraxis {
-  onDeletePraxis {
-    id
-    Strasse
-    Name
-    HausNr
-    Postleitzahl
-    BetriebsstaettenNr
-    Praxisid
-    Ort
-    Telefonnummer
-    Email
-    HausAufteilung
-    Etagen
-    Zimmernummer
-  }
-}
-`;
-export const onCreatePraxisGeschaeftsfuerung = `subscription OnCreatePraxisGeschaeftsfuerung {
-  onCreatePraxisGeschaeftsfuerung {
-    id
-    Vorname
-    Nachname
-    Telefonnummer
-    BetriebsstaettenNr
-    Email
-    Zustand
-    Praxis
-    Formular
-    userId
-    username
-    Group
-  }
-}
-`;
-export const onUpdatePraxisGeschaeftsfuerung = `subscription OnUpdatePraxisGeschaeftsfuerung {
-  onUpdatePraxisGeschaeftsfuerung {
-    id
-    Vorname
-    Nachname
-    Telefonnummer
-    BetriebsstaettenNr
-    Email
-    Zustand
-    Praxis
-    Formular
-    userId
-    username
-    Group
-  }
-}
-`;
-export const onDeletePraxisGeschaeftsfuerung = `subscription OnDeletePraxisGeschaeftsfuerung {
-  onDeletePraxisGeschaeftsfuerung {
-    id
-    Vorname
-    Nachname
-    Telefonnummer
-    BetriebsstaettenNr
-    Email
-    Zustand
-    Praxis
-    Formular
-    userId
-    username
-    Group
-  }
-}
-`;
 export const onCreatePflegeheim = `subscription OnCreatePflegeheim {
   onCreatePflegeheim {
     id
     Strasse
-    Pflegeheimid
     Name
+    Pflegeheimid
     HausNr
     Postleitzahl
     Ort
@@ -463,6 +604,54 @@ export const onDeletePflegeheim = `subscription OnDeletePflegeheim {
     Etagen
     Zimmernummer
     Formular
+  }
+}
+`;
+export const onCreatePflegeheimGeschaeftsfuerung = `subscription OnCreatePflegeheimGeschaeftsfuerung {
+  onCreatePflegeheimGeschaeftsfuerung {
+    id
+    Vorname
+    Nachname
+    Telefonnummer
+    Email
+    Zustand
+    Pflegeheim
+    Formular
+    userId
+    username
+    Group
+  }
+}
+`;
+export const onUpdatePflegeheimGeschaeftsfuerung = `subscription OnUpdatePflegeheimGeschaeftsfuerung {
+  onUpdatePflegeheimGeschaeftsfuerung {
+    id
+    Vorname
+    Nachname
+    Telefonnummer
+    Email
+    Zustand
+    Pflegeheim
+    Formular
+    userId
+    username
+    Group
+  }
+}
+`;
+export const onDeletePflegeheimGeschaeftsfuerung = `subscription OnDeletePflegeheimGeschaeftsfuerung {
+  onDeletePflegeheimGeschaeftsfuerung {
+    id
+    Vorname
+    Nachname
+    Telefonnummer
+    Email
+    Zustand
+    Pflegeheim
+    Formular
+    userId
+    username
+    Group
   }
 }
 `;
@@ -521,6 +710,7 @@ export const onCreatePflegeheimPDL = `subscription OnCreatePflegeheimPDL {
     Nachname
     Telefonnummer
     Email
+    username
     userId
     Zustand
     Pflegeheim
@@ -535,6 +725,7 @@ export const onUpdatePflegeheimPDL = `subscription OnUpdatePflegeheimPDL {
     Nachname
     Telefonnummer
     Email
+    username
     userId
     Zustand
     Pflegeheim
@@ -549,6 +740,7 @@ export const onDeletePflegeheimPDL = `subscription OnDeletePflegeheimPDL {
     Nachname
     Telefonnummer
     Email
+    username
     userId
     Zustand
     Pflegeheim
@@ -556,15 +748,70 @@ export const onDeletePflegeheimPDL = `subscription OnDeletePflegeheimPDL {
   }
 }
 `;
-export const onCreatePflegeheimGeschaeftsfuerung = `subscription OnCreatePflegeheimGeschaeftsfuerung {
-  onCreatePflegeheimGeschaeftsfuerung {
+export const onCreatePraxis = `subscription OnCreatePraxis {
+  onCreatePraxis {
+    id
+    Strasse
+    Praxisid
+    BetriebsstaettenNr
+    Name
+    HausNr
+    Postleitzahl
+    Ort
+    Telefonnummer
+    Email
+    HausAufteilung
+    Etagen
+    Zimmernummer
+  }
+}
+`;
+export const onUpdatePraxis = `subscription OnUpdatePraxis {
+  onUpdatePraxis {
+    id
+    Strasse
+    Praxisid
+    BetriebsstaettenNr
+    Name
+    HausNr
+    Postleitzahl
+    Ort
+    Telefonnummer
+    Email
+    HausAufteilung
+    Etagen
+    Zimmernummer
+  }
+}
+`;
+export const onDeletePraxis = `subscription OnDeletePraxis {
+  onDeletePraxis {
+    id
+    Strasse
+    Praxisid
+    BetriebsstaettenNr
+    Name
+    HausNr
+    Postleitzahl
+    Ort
+    Telefonnummer
+    Email
+    HausAufteilung
+    Etagen
+    Zimmernummer
+  }
+}
+`;
+export const onCreatePraxisGeschaeftsfuerung = `subscription OnCreatePraxisGeschaeftsfuerung {
+  onCreatePraxisGeschaeftsfuerung {
     id
     Vorname
     Nachname
+    BetriebsstaettenNr
     Telefonnummer
     Email
     Zustand
-    Pflegeheim
+    Praxis
     Formular
     userId
     username
@@ -572,15 +819,16 @@ export const onCreatePflegeheimGeschaeftsfuerung = `subscription OnCreatePflegeh
   }
 }
 `;
-export const onUpdatePflegeheimGeschaeftsfuerung = `subscription OnUpdatePflegeheimGeschaeftsfuerung {
-  onUpdatePflegeheimGeschaeftsfuerung {
+export const onUpdatePraxisGeschaeftsfuerung = `subscription OnUpdatePraxisGeschaeftsfuerung {
+  onUpdatePraxisGeschaeftsfuerung {
     id
     Vorname
     Nachname
+    BetriebsstaettenNr
     Telefonnummer
     Email
     Zustand
-    Pflegeheim
+    Praxis
     Formular
     userId
     username
@@ -588,15 +836,16 @@ export const onUpdatePflegeheimGeschaeftsfuerung = `subscription OnUpdatePflegeh
   }
 }
 `;
-export const onDeletePflegeheimGeschaeftsfuerung = `subscription OnDeletePflegeheimGeschaeftsfuerung {
-  onDeletePflegeheimGeschaeftsfuerung {
+export const onDeletePraxisGeschaeftsfuerung = `subscription OnDeletePraxisGeschaeftsfuerung {
+  onDeletePraxisGeschaeftsfuerung {
     id
     Vorname
     Nachname
+    BetriebsstaettenNr
     Telefonnummer
     Email
     Zustand
-    Pflegeheim
+    Praxis
     Formular
     userId
     username
@@ -604,30 +853,54 @@ export const onDeletePflegeheimGeschaeftsfuerung = `subscription OnDeletePflegeh
   }
 }
 `;
-export const onCreateDistanzen = `subscription OnCreateDistanzen {
-  onCreateDistanzen {
+export const onCreatePraxisMitarbeiter = `subscription OnCreatePraxisMitarbeiter {
+  onCreatePraxisMitarbeiter {
     id
-    Start
-    Ende
-    Distanz
+    Vorname
+    Nachname
+    BetriebsstaettenNr
+    Telefonnummer
+    Email
+    Zustand
+    Praxis
+    Formular
+    userId
+    username
+    Group
   }
 }
 `;
-export const onUpdateDistanzen = `subscription OnUpdateDistanzen {
-  onUpdateDistanzen {
+export const onUpdatePraxisMitarbeiter = `subscription OnUpdatePraxisMitarbeiter {
+  onUpdatePraxisMitarbeiter {
     id
-    Start
-    Ende
-    Distanz
+    Vorname
+    Nachname
+    BetriebsstaettenNr
+    Telefonnummer
+    Email
+    Zustand
+    Praxis
+    Formular
+    userId
+    username
+    Group
   }
 }
 `;
-export const onDeleteDistanzen = `subscription OnDeleteDistanzen {
-  onDeleteDistanzen {
+export const onDeletePraxisMitarbeiter = `subscription OnDeletePraxisMitarbeiter {
+  onDeletePraxisMitarbeiter {
     id
-    Start
-    Ende
-    Distanz
+    Vorname
+    Nachname
+    BetriebsstaettenNr
+    Telefonnummer
+    Email
+    Zustand
+    Praxis
+    Formular
+    userId
+    username
+    Group
   }
 }
 `;
@@ -638,11 +911,11 @@ export const onCreateRecords = `subscription OnCreateRecords {
     patient
     record
     Session
-	    SessionTime
+    SessionTime
     zahn
-  	datum
+    datum
     abrechnungsnummerprivat
-	  abrechnungsnummergesaetzlich
+    abrechnungsnummergesaetzlich
     Leistungskette
     Ketteninhalt
     file {
@@ -661,50 +934,18 @@ export const onCreateRecords = `subscription OnCreateRecords {
   }
 }
 `;
-
-export const onCreateRecords2 = `subscription OnCreateRecords2($records: [CreateRecordsInput]) {
-  onCreateRecords2(records: $records) {
-    id
-    arzt
-    patient
-    record
-    abrechnungsnummerprivat
-    Session
-	    SessionTime
-	  abrechnungsnummergesaetzlich
-    Leistungskette
-    zahn
-  	datum
-    Ketteninhalt
-    file {
-      bucket
-      region
-      key
-    }
-    audio {
-      bucket
-      region
-      key
-    }
-    Access
-    createdAt
-    updatedAt
-  }
-}
-`;
-
 export const onUpdateRecords = `subscription OnUpdateRecords {
   onUpdateRecords {
     id
     arzt
     patient
     record
+    Session
+    SessionTime
     zahn
     datum
-    Session
-	    SessionTime
     abrechnungsnummerprivat
-	  abrechnungsnummergesaetzlich
+    abrechnungsnummergesaetzlich
     Leistungskette
     Ketteninhalt
     file {
@@ -729,12 +970,12 @@ export const onDeleteRecords = `subscription OnDeleteRecords {
     arzt
     patient
     record
+    Session
+    SessionTime
     zahn
     datum
-    Session
-	    SessionTime
     abrechnungsnummerprivat
-	  abrechnungsnummergesaetzlich
+    abrechnungsnummergesaetzlich
     Leistungskette
     Ketteninhalt
     file {
@@ -753,51 +994,117 @@ export const onDeleteRecords = `subscription OnDeleteRecords {
   }
 }
 `;
-export const onCreateBehandlungen = `subscription OnCreateBehandlungen {
-  onCreateBehandlungen {
+export const onCreateTracking = `subscription OnCreateTracking {
+  onCreateTracking {
     id
-    name
-    Kuerzel
-    Arzt
-    ArztName
-    Patient
-    Volgebehandlung
-    PatientName
-    abrechnungsnummerprivat
-    abrechnungsnummergesaetzlich
-    Kette
+    start
+    end
+    Session
+    SessionTime
+    Leistung
+    distanz
+    Date
+    PatientId
+    ArztId
+    ids
+    Number
+    Praxis
+    createdAt
   }
 }
 `;
-export const onUpdateBehandlungen = `subscription OnUpdateBehandlungen {
-  onUpdateBehandlungen {
+export const onUpdateTracking = `subscription OnUpdateTracking {
+  onUpdateTracking {
     id
-    name
-    Kuerzel
-    Arzt
-    ArztName
-    Patient
-    PatientName
-    abrechnungsnummerprivat
-    Volgebehandlung
-    abrechnungsnummergesaetzlich
-    Kette
+    start
+    end
+    Session
+    SessionTime
+    Leistung
+    distanz
+    Date
+    PatientId
+    ArztId
+    ids
+    Number
+    Praxis
+    createdAt
   }
 }
 `;
-export const onDeleteBehandlungen = `subscription OnDeleteBehandlungen {
-  onDeleteBehandlungen {
+export const onDeleteTracking = `subscription OnDeleteTracking {
+  onDeleteTracking {
     id
-    name
-    Kuerzel
-    Arzt
-    ArztName
-    Patient
-    Volgebehandlung
-    PatientName
+    start
+    end
+    Session
+    SessionTime
+    Leistung
+    distanz
+    Date
+    PatientId
+    ArztId
+    ids
+    Number
+    Praxis
+    createdAt
+  }
+}
+`;
+export const onCreateVolgebehandlung = `subscription OnCreateVolgebehandlung {
+  onCreateVolgebehandlung {
+    id
+    Leistungsname
+    Name
+    Leistungskette
     abrechnungsnummerprivat
     abrechnungsnummergesaetzlich
-    Kette
+  }
+}
+`;
+export const onUpdateVolgebehandlung = `subscription OnUpdateVolgebehandlung {
+  onUpdateVolgebehandlung {
+    id
+    Leistungsname
+    Name
+    Leistungskette
+    abrechnungsnummerprivat
+    abrechnungsnummergesaetzlich
+  }
+}
+`;
+export const onDeleteVolgebehandlung = `subscription OnDeleteVolgebehandlung {
+  onDeleteVolgebehandlung {
+    id
+    Leistungsname
+    Name
+    Leistungskette
+    abrechnungsnummerprivat
+    abrechnungsnummergesaetzlich
+  }
+}
+`;
+export const onCreateWegegeldTable = `subscription OnCreateWegegeldTable {
+  onCreateWegegeldTable {
+    id
+    Distanz
+    Nummer
+  }
+}
+`;
+export const onUpdateWegegeldTable = `subscription OnUpdateWegegeldTable {
+  onUpdateWegegeldTable {
+    id
+    Distanz
+    Nummer
+  }
+}
+`;
+export const onDeleteWegegeldTable = `subscription OnDeleteWegegeldTable {
+  onDeleteWegegeldTable {
+    id
+    Distanz
+    Nummer
   }
 }
 `;

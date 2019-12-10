@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import PropTypes from 'prop-types';
 
-import { Input } from "galio-framework";
+import { Input } from 'react-native-paper';
 
 import Icon from './Icon';
 import { argonTheme } from "../constants";

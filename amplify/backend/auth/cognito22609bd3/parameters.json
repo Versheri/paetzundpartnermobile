@@ -1,6 +1,6 @@
 {
     "identityPoolName": "cognito22609bd3_identitypool_22609bd3",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "lambdaLogPolicy": "cognito22609bd3_lambda_log_policy",
     "openIdLambdaRoleName": "cognito22609bd3_openid_lambda_role",
     "openIdRolePolicy": "cognito22609bd3_openid_pass_role_policy",
@@ -69,5 +69,6 @@
             "Arn"
         ]
     },
-    "useDefault": "default"
+    "useDefault": "default",
+    "hostedUI": false
 }

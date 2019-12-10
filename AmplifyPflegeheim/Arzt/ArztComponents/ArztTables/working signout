@@ -12,7 +12,7 @@ import Auth from '@aws-amplify/auth';
 import Analytics from '@aws-amplify/analytics';
 import Amplify from '@aws-amplify/core';
 import {Authenticator} from "aws-amplify-react-native"
-import awsconfig from './aws-exports';
+import awsconfig from './exports2';
 
 import Screens from './navigation/Screens';
 import { Images, articles, argonTheme } from './constants';
@@ -55,7 +55,7 @@ Amplify.configure({
       // REQUIRED - Amazon Cognito Region
       region: 'eu-central-1', 
       // OPTIONAL - Amazon Cognito User Pool ID
-      userPoolId: 'eu-central-1_OEyQ7sJ8l',
+      userPoolId: 'eu-central-1_8xm81YTdA',
       // OPTIONAL - Amazon Cognito Web Client ID
       userPoolWebClientId: '7rlfpvmb6tg7captv373bh2392', 
   },

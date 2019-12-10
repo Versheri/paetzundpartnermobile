@@ -6,7 +6,7 @@ import {
   Dimensions,
   Image
 } from "react-native";
-import { Block, theme } from "galio-framework";
+import { Block, theme } from 'react-native-paper';
 
 import Images from "../constants/Images";
 

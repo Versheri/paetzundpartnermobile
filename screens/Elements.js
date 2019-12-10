@@ -1,7 +1,7 @@
 import React from "react";
 import { ScrollView, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
 // Galio components
-import { Block, Text, Button as GaButton, theme } from "galio-framework";
+import { Block, Text, Button as GaButton, theme } from 'react-native-paper';
 // Argon themed components
 import { argonTheme, tabs } from "../constants/";
 import { Button, Select, Icon, Input, Header, Switch } from "../components/";

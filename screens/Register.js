@@ -6,7 +6,7 @@ import {
   StatusBar,
   KeyboardAvoidingView
 } from "react-native";
-import { Block, Checkbox, Text, theme } from "galio-framework";
+import { Block, Checkbox, Text, theme } from 'react-native-paper';
 
 import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
