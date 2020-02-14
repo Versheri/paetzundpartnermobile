@@ -1,10 +1,37 @@
 
 
+
+
+export const Nutzername = "Nutzername";
+export const Passwort = "Passwort";
+export const Anmelden = "Anmelden";
+export const Einloggen = "Einloggen";
+export const ForgotPassword="Passwort vergessen?";
+export const ForgotPasswordResponse="Sie erhalten gleich ne mail den code geben sie bitte unten ein";
+export const NewPassword="Neues Passwort";
+export const BackToLogin="zurück zum Login";
+export const ResetPassword="Passwort zurücksetzen";
+export const Fertig="Fertig";
+export const Code="Code";
+export const NonexistentGroup="Du bist keiner gruppe zugestellt. Bitte kontaktiere deinen Praxis Administratord bzw. Pflegeheim Administrator"
+
+export const AddPatient="Patientent Eintragen";
+
+export const PatientPage="Profil";
+
+export const AuthErrors = {
+    UserNotFoundException: "Der Nutzer Existiert Nicht",
+    NotAuthorizedException: "Dein Passwort ist Falsch",
+    CodeMismatchException: "Der Code ist Falsch",
+    EmptyField: "Kein Feld darf Leer Sein",
+};
+
+
 export const TextAnlegenPatient = "Neun Patienten Anlegen";
 export const TextAnlegenBetreuer = "Neun Betreuer Anlegen";
 export const TextAnlegenArzt = "Neun Arzt Anlegen";
 export const TextAnlegenPraxisadmin = "Neun Praxis Administrator Anlegen";
-export const TextTablePatient = "Patienten";
+export const PatientTable = "Patienten";
 export const TextTableArzt = "Arzt";
 export const TextTableBetreuer = "Betreuer";
 export const TextTablePflegeheimPDL = "PflegeheimPDL";

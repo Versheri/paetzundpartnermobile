@@ -1,11 +1,35 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createAbbrechnung = `mutation CreateAbbrechnung(
-  $input: CreateAbbrechnungInput!
-  $condition: ModelAbbrechnungConditionInput
-) {
-  createAbbrechnung(input: $input, condition: $condition) {
+export const onCreateAbbrechnung = `subscription OnCreateAbbrechnung {
+  onCreateAbbrechnung {
+    id
+    Typ
+    Eintrag
+    Kette
+    patient
+    arzt
+    createdAt
+    filetype
+    Ketteninhalt
+    bild {
+      bucket
+      region
+      key
+    }
+    audio {
+      bucket
+      region
+      key
+    }
+    status
+    _version
+  }
+}
+`;
+
+export const onUpdateAbbrechnung = `subscription OnUpdateAbbrechnung {
+  onUpdateAbbrechnung {
     id
     Typ
     Eintrag
@@ -32,11 +56,8 @@ export const createAbbrechnung = `mutation CreateAbbrechnung(
   }
 }
 `;
-export const updateAbbrechnung = `mutation UpdateAbbrechnung(
-  $input: UpdateAbbrechnungInput!
-  $condition: ModelAbbrechnungConditionInput
-) {
-  updateAbbrechnung(input: $input, condition: $condition) {
+export const onDeleteAbbrechnung = `subscription OnDeleteAbbrechnung {
+  onDeleteAbbrechnung {
     id
     Typ
     Eintrag
@@ -63,42 +84,8 @@ export const updateAbbrechnung = `mutation UpdateAbbrechnung(
   }
 }
 `;
-export const deleteAbbrechnung = `mutation DeleteAbbrechnung(
-  $input: DeleteAbbrechnungInput!
-  $condition: ModelAbbrechnungConditionInput
-) {
-  deleteAbbrechnung(input: $input, condition: $condition) {
-    id
-    Typ
-    Eintrag
-    Kette
-    patient
-    arzt
-    createdAt
-    filetype
-    Ketteninhalt
-    bild {
-      bucket
-      region
-      key
-    }
-    audio {
-      bucket
-      region
-      key
-    }
-    status
-    _version
-    _deleted
-    _lastChangedAt
-  }
-}
-`;
-export const createAdministrator = `mutation CreateAdministrator(
-  $input: CreateAdministratorInput!
-  $condition: ModelAdministratorConditionInput
-) {
-  createAdministrator(input: $input, condition: $condition) {
+export const onCreateAdministrator = `subscription OnCreateAdministrator {
+  onCreateAdministrator {
     id
     Vorname
     Nachname
@@ -113,11 +100,8 @@ export const createAdministrator = `mutation CreateAdministrator(
   }
 }
 `;
-export const updateAdministrator = `mutation UpdateAdministrator(
-  $input: UpdateAdministratorInput!
-  $condition: ModelAdministratorConditionInput
-) {
-  updateAdministrator(input: $input, condition: $condition) {
+export const onUpdateAdministrator = `subscription OnUpdateAdministrator {
+  onUpdateAdministrator {
     id
     Vorname
     Nachname
@@ -132,11 +116,8 @@ export const updateAdministrator = `mutation UpdateAdministrator(
   }
 }
 `;
-export const deleteAdministrator = `mutation DeleteAdministrator(
-  $input: DeleteAdministratorInput!
-  $condition: ModelAdministratorConditionInput
-) {
-  deleteAdministrator(input: $input, condition: $condition) {
+export const onDeleteAdministrator = `subscription OnDeleteAdministrator {
+  onDeleteAdministrator {
     id
     Vorname
     Nachname
@@ -151,11 +132,8 @@ export const deleteAdministrator = `mutation DeleteAdministrator(
   }
 }
 `;
-export const createArzt = `mutation CreateArzt(
-  $input: CreateArztInput!
-  $condition: ModelArztConditionInput
-) {
-  createArzt(input: $input, condition: $condition) {
+export const onCreateArzt = `subscription OnCreateArzt {
+  onCreateArzt {
     id
     Vorname
     Arztnr
@@ -180,11 +158,8 @@ export const createArzt = `mutation CreateArzt(
   }
 }
 `;
-export const updateArzt = `mutation UpdateArzt(
-  $input: UpdateArztInput!
-  $condition: ModelArztConditionInput
-) {
-  updateArzt(input: $input, condition: $condition) {
+export const onUpdateArzt = `subscription OnUpdateArzt {
+  onUpdateArzt {
     id
     Vorname
     Arztnr
@@ -209,11 +184,8 @@ export const updateArzt = `mutation UpdateArzt(
   }
 }
 `;
-export const deleteArzt = `mutation DeleteArzt(
-  $input: DeleteArztInput!
-  $condition: ModelArztConditionInput
-) {
-  deleteArzt(input: $input, condition: $condition) {
+export const onDeleteArzt = `subscription OnDeleteArzt {
+  onDeleteArzt {
     id
     Vorname
     Arztnr
@@ -238,11 +210,8 @@ export const deleteArzt = `mutation DeleteArzt(
   }
 }
 `;
-export const createBehandlungen = `mutation CreateBehandlungen(
-  $input: CreateBehandlungenInput!
-  $condition: ModelBehandlungenConditionInput
-) {
-  createBehandlungen(input: $input, condition: $condition) {
+export const onCreateBehandlungen = `subscription OnCreateBehandlungen {
+  onCreateBehandlungen {
     id
     name
     Kuerzel
@@ -262,11 +231,8 @@ export const createBehandlungen = `mutation CreateBehandlungen(
   }
 }
 `;
-export const updateBehandlungen = `mutation UpdateBehandlungen(
-  $input: UpdateBehandlungenInput!
-  $condition: ModelBehandlungenConditionInput
-) {
-  updateBehandlungen(input: $input, condition: $condition) {
+export const onUpdateBehandlungen = `subscription OnUpdateBehandlungen {
+  onUpdateBehandlungen {
     id
     name
     Kuerzel
@@ -286,11 +252,8 @@ export const updateBehandlungen = `mutation UpdateBehandlungen(
   }
 }
 `;
-export const deleteBehandlungen = `mutation DeleteBehandlungen(
-  $input: DeleteBehandlungenInput!
-  $condition: ModelBehandlungenConditionInput
-) {
-  deleteBehandlungen(input: $input, condition: $condition) {
+export const onDeleteBehandlungen = `subscription OnDeleteBehandlungen {
+  onDeleteBehandlungen {
     id
     name
     Kuerzel
@@ -310,11 +273,8 @@ export const deleteBehandlungen = `mutation DeleteBehandlungen(
   }
 }
 `;
-export const createBetreuer = `mutation CreateBetreuer(
-  $input: CreateBetreuerInput!
-  $condition: ModelBetreuerConditionInput
-) {
-  createBetreuer(input: $input, condition: $condition) {
+export const onCreateBetreuer = `subscription OnCreateBetreuer {
+  onCreateBetreuer {
     id
     Vorname
     Nachname
@@ -337,11 +297,8 @@ export const createBetreuer = `mutation CreateBetreuer(
   }
 }
 `;
-export const updateBetreuer = `mutation UpdateBetreuer(
-  $input: UpdateBetreuerInput!
-  $condition: ModelBetreuerConditionInput
-) {
-  updateBetreuer(input: $input, condition: $condition) {
+export const onUpdateBetreuer = `subscription OnUpdateBetreuer {
+  onUpdateBetreuer {
     id
     Vorname
     Nachname
@@ -364,11 +321,8 @@ export const updateBetreuer = `mutation UpdateBetreuer(
   }
 }
 `;
-export const deleteBetreuer = `mutation DeleteBetreuer(
-  $input: DeleteBetreuerInput!
-  $condition: ModelBetreuerConditionInput
-) {
-  deleteBetreuer(input: $input, condition: $condition) {
+export const onDeleteBetreuer = `subscription OnDeleteBetreuer {
+  onDeleteBetreuer {
     id
     Vorname
     Nachname
@@ -391,11 +345,8 @@ export const deleteBetreuer = `mutation DeleteBetreuer(
   }
 }
 `;
-export const createDistanzen = `mutation CreateDistanzen(
-  $input: CreateDistanzenInput!
-  $condition: ModelDistanzenConditionInput
-) {
-  createDistanzen(input: $input, condition: $condition) {
+export const onCreateDistanzen = `subscription OnCreateDistanzen {
+  onCreateDistanzen {
     id
     Start
     Ende
@@ -407,11 +358,8 @@ export const createDistanzen = `mutation CreateDistanzen(
   }
 }
 `;
-export const updateDistanzen = `mutation UpdateDistanzen(
-  $input: UpdateDistanzenInput!
-  $condition: ModelDistanzenConditionInput
-) {
-  updateDistanzen(input: $input, condition: $condition) {
+export const onUpdateDistanzen = `subscription OnUpdateDistanzen {
+  onUpdateDistanzen {
     id
     Start
     Ende
@@ -423,11 +371,8 @@ export const updateDistanzen = `mutation UpdateDistanzen(
   }
 }
 `;
-export const deleteDistanzen = `mutation DeleteDistanzen(
-  $input: DeleteDistanzenInput!
-  $condition: ModelDistanzenConditionInput
-) {
-  deleteDistanzen(input: $input, condition: $condition) {
+export const onDeleteDistanzen = `subscription OnDeleteDistanzen {
+  onDeleteDistanzen {
     id
     Start
     Ende
@@ -439,11 +384,8 @@ export const deleteDistanzen = `mutation DeleteDistanzen(
   }
 }
 `;
-export const createKrankenKassen = `mutation CreateKrankenKassen(
-  $input: CreateKrankenKassenInput!
-  $condition: ModelKrankenKassenConditionInput
-) {
-  createKrankenKassen(input: $input, condition: $condition) {
+export const onCreateKrankenKassen = `subscription OnCreateKrankenKassen {
+  onCreateKrankenKassen {
     id
     kgruppe
     kzv
@@ -466,11 +408,8 @@ export const createKrankenKassen = `mutation CreateKrankenKassen(
   }
 }
 `;
-export const updateKrankenKassen = `mutation UpdateKrankenKassen(
-  $input: UpdateKrankenKassenInput!
-  $condition: ModelKrankenKassenConditionInput
-) {
-  updateKrankenKassen(input: $input, condition: $condition) {
+export const onUpdateKrankenKassen = `subscription OnUpdateKrankenKassen {
+  onUpdateKrankenKassen {
     id
     kgruppe
     kzv
@@ -493,11 +432,8 @@ export const updateKrankenKassen = `mutation UpdateKrankenKassen(
   }
 }
 `;
-export const deleteKrankenKassen = `mutation DeleteKrankenKassen(
-  $input: DeleteKrankenKassenInput!
-  $condition: ModelKrankenKassenConditionInput
-) {
-  deleteKrankenKassen(input: $input, condition: $condition) {
+export const onDeleteKrankenKassen = `subscription OnDeleteKrankenKassen {
+  onDeleteKrankenKassen {
     id
     kgruppe
     kzv
@@ -520,11 +456,8 @@ export const deleteKrankenKassen = `mutation DeleteKrankenKassen(
   }
 }
 `;
-export const createLeistungsKette = `mutation CreateLeistungsKette(
-  $input: CreateLeistungsKetteInput!
-  $condition: ModelLeistungsKetteConditionInput
-) {
-  createLeistungsKette(input: $input, condition: $condition) {
+export const onCreateLeistungsKette = `subscription OnCreateLeistungsKette {
+  onCreateLeistungsKette {
     id
     Name
     Typ
@@ -536,11 +469,8 @@ export const createLeistungsKette = `mutation CreateLeistungsKette(
   }
 }
 `;
-export const updateLeistungsKette = `mutation UpdateLeistungsKette(
-  $input: UpdateLeistungsKetteInput!
-  $condition: ModelLeistungsKetteConditionInput
-) {
-  updateLeistungsKette(input: $input, condition: $condition) {
+export const onUpdateLeistungsKette = `subscription OnUpdateLeistungsKette {
+  onUpdateLeistungsKette {
     id
     Name
     Typ
@@ -552,11 +482,8 @@ export const updateLeistungsKette = `mutation UpdateLeistungsKette(
   }
 }
 `;
-export const deleteLeistungsKette = `mutation DeleteLeistungsKette(
-  $input: DeleteLeistungsKetteInput!
-  $condition: ModelLeistungsKetteConditionInput
-) {
-  deleteLeistungsKette(input: $input, condition: $condition) {
+export const onDeleteLeistungsKette = `subscription OnDeleteLeistungsKette {
+  onDeleteLeistungsKette {
     id
     Name
     Typ
@@ -568,11 +495,8 @@ export const deleteLeistungsKette = `mutation DeleteLeistungsKette(
   }
 }
 `;
-export const createOffeneVolgebehandlung = `mutation CreateOffeneVolgebehandlung(
-  $input: CreateOffeneVolgebehandlungInput!
-  $condition: ModelOffeneVolgebehandlungConditionInput
-) {
-  createOffeneVolgebehandlung(input: $input, condition: $condition) {
+export const onCreateOffeneVolgebehandlung = `subscription OnCreateOffeneVolgebehandlung {
+  onCreateOffeneVolgebehandlung {
     id
     Leistungsname
     Name
@@ -593,11 +517,8 @@ export const createOffeneVolgebehandlung = `mutation CreateOffeneVolgebehandlung
   }
 }
 `;
-export const updateOffeneVolgebehandlung = `mutation UpdateOffeneVolgebehandlung(
-  $input: UpdateOffeneVolgebehandlungInput!
-  $condition: ModelOffeneVolgebehandlungConditionInput
-) {
-  updateOffeneVolgebehandlung(input: $input, condition: $condition) {
+export const onUpdateOffeneVolgebehandlung = `subscription OnUpdateOffeneVolgebehandlung {
+  onUpdateOffeneVolgebehandlung {
     id
     Leistungsname
     Name
@@ -618,11 +539,8 @@ export const updateOffeneVolgebehandlung = `mutation UpdateOffeneVolgebehandlung
   }
 }
 `;
-export const deleteOffeneVolgebehandlung = `mutation DeleteOffeneVolgebehandlung(
-  $input: DeleteOffeneVolgebehandlungInput!
-  $condition: ModelOffeneVolgebehandlungConditionInput
-) {
-  deleteOffeneVolgebehandlung(input: $input, condition: $condition) {
+export const onDeleteOffeneVolgebehandlung = `subscription OnDeleteOffeneVolgebehandlung {
+  onDeleteOffeneVolgebehandlung {
     id
     Leistungsname
     Name
@@ -643,11 +561,8 @@ export const deleteOffeneVolgebehandlung = `mutation DeleteOffeneVolgebehandlung
   }
 }
 `;
-export const createPatient = `mutation CreatePatient(
-  $input: CreatePatientInput!
-  $condition: ModelPatientConditionInput
-) {
-  createPatient(input: $input, condition: $condition) {
+export const onCreatePatient = `subscription OnCreatePatient {
+  onCreatePatient {
     id
     Vorname
     Nachname
@@ -683,11 +598,8 @@ export const createPatient = `mutation CreatePatient(
   }
 }
 `;
-export const updatePatient = `mutation UpdatePatient(
-  $input: UpdatePatientInput!
-  $condition: ModelPatientConditionInput
-) {
-  updatePatient(input: $input, condition: $condition) {
+export const onUpdatePatient = `subscription OnUpdatePatient {
+  onUpdatePatient {
     id
     Vorname
     Nachname
@@ -723,11 +635,8 @@ export const updatePatient = `mutation UpdatePatient(
   }
 }
 `;
-export const deletePatient = `mutation DeletePatient(
-  $input: DeletePatientInput!
-  $condition: ModelPatientConditionInput
-) {
-  deletePatient(input: $input, condition: $condition) {
+export const onDeletePatient = `subscription OnDeletePatient {
+  onDeletePatient {
     id
     Vorname
     Nachname
@@ -763,11 +672,8 @@ export const deletePatient = `mutation DeletePatient(
   }
 }
 `;
-export const createPflegeheim = `mutation CreatePflegeheim(
-  $input: CreatePflegeheimInput!
-  $condition: ModelPflegeheimConditionInput
-) {
-  createPflegeheim(input: $input, condition: $condition) {
+export const onCreatePflegeheim = `subscription OnCreatePflegeheim {
+  onCreatePflegeheim {
     id
     Strasse
     Name
@@ -788,11 +694,8 @@ export const createPflegeheim = `mutation CreatePflegeheim(
   }
 }
 `;
-export const updatePflegeheim = `mutation UpdatePflegeheim(
-  $input: UpdatePflegeheimInput!
-  $condition: ModelPflegeheimConditionInput
-) {
-  updatePflegeheim(input: $input, condition: $condition) {
+export const onUpdatePflegeheim = `subscription OnUpdatePflegeheim {
+  onUpdatePflegeheim {
     id
     Strasse
     Name
@@ -813,11 +716,8 @@ export const updatePflegeheim = `mutation UpdatePflegeheim(
   }
 }
 `;
-export const deletePflegeheim = `mutation DeletePflegeheim(
-  $input: DeletePflegeheimInput!
-  $condition: ModelPflegeheimConditionInput
-) {
-  deletePflegeheim(input: $input, condition: $condition) {
+export const onDeletePflegeheim = `subscription OnDeletePflegeheim {
+  onDeletePflegeheim {
     id
     Strasse
     Name
@@ -838,11 +738,8 @@ export const deletePflegeheim = `mutation DeletePflegeheim(
   }
 }
 `;
-export const createPflegeheimGeschaeftsfuerung = `mutation CreatePflegeheimGeschaeftsfuerung(
-  $input: CreatePflegeheimGeschaeftsfuerungInput!
-  $condition: ModelPflegeheimGeschaeftsfuerungConditionInput
-) {
-  createPflegeheimGeschaeftsfuerung(input: $input, condition: $condition) {
+export const onCreatePflegeheimGeschaeftsfuerung = `subscription OnCreatePflegeheimGeschaeftsfuerung {
+  onCreatePflegeheimGeschaeftsfuerung {
     id
     Vorname
     Nachname
@@ -861,11 +758,8 @@ export const createPflegeheimGeschaeftsfuerung = `mutation CreatePflegeheimGesch
   }
 }
 `;
-export const updatePflegeheimGeschaeftsfuerung = `mutation UpdatePflegeheimGeschaeftsfuerung(
-  $input: UpdatePflegeheimGeschaeftsfuerungInput!
-  $condition: ModelPflegeheimGeschaeftsfuerungConditionInput
-) {
-  updatePflegeheimGeschaeftsfuerung(input: $input, condition: $condition) {
+export const onUpdatePflegeheimGeschaeftsfuerung = `subscription OnUpdatePflegeheimGeschaeftsfuerung {
+  onUpdatePflegeheimGeschaeftsfuerung {
     id
     Vorname
     Nachname
@@ -884,11 +778,8 @@ export const updatePflegeheimGeschaeftsfuerung = `mutation UpdatePflegeheimGesch
   }
 }
 `;
-export const deletePflegeheimGeschaeftsfuerung = `mutation DeletePflegeheimGeschaeftsfuerung(
-  $input: DeletePflegeheimGeschaeftsfuerungInput!
-  $condition: ModelPflegeheimGeschaeftsfuerungConditionInput
-) {
-  deletePflegeheimGeschaeftsfuerung(input: $input, condition: $condition) {
+export const onDeletePflegeheimGeschaeftsfuerung = `subscription OnDeletePflegeheimGeschaeftsfuerung {
+  onDeletePflegeheimGeschaeftsfuerung {
     id
     Vorname
     Nachname
@@ -907,11 +798,8 @@ export const deletePflegeheimGeschaeftsfuerung = `mutation DeletePflegeheimGesch
   }
 }
 `;
-export const createPflegeheimMitarbeiter = `mutation CreatePflegeheimMitarbeiter(
-  $input: CreatePflegeheimMitarbeiterInput!
-  $condition: ModelPflegeheimMitarbeiterConditionInput
-) {
-  createPflegeheimMitarbeiter(input: $input, condition: $condition) {
+export const onCreatePflegeheimMitarbeiter = `subscription OnCreatePflegeheimMitarbeiter {
+  onCreatePflegeheimMitarbeiter {
     id
     Vorname
     Nachname
@@ -930,11 +818,8 @@ export const createPflegeheimMitarbeiter = `mutation CreatePflegeheimMitarbeiter
   }
 }
 `;
-export const updatePflegeheimMitarbeiter = `mutation UpdatePflegeheimMitarbeiter(
-  $input: UpdatePflegeheimMitarbeiterInput!
-  $condition: ModelPflegeheimMitarbeiterConditionInput
-) {
-  updatePflegeheimMitarbeiter(input: $input, condition: $condition) {
+export const onUpdatePflegeheimMitarbeiter = `subscription OnUpdatePflegeheimMitarbeiter {
+  onUpdatePflegeheimMitarbeiter {
     id
     Vorname
     Nachname
@@ -953,11 +838,8 @@ export const updatePflegeheimMitarbeiter = `mutation UpdatePflegeheimMitarbeiter
   }
 }
 `;
-export const deletePflegeheimMitarbeiter = `mutation DeletePflegeheimMitarbeiter(
-  $input: DeletePflegeheimMitarbeiterInput!
-  $condition: ModelPflegeheimMitarbeiterConditionInput
-) {
-  deletePflegeheimMitarbeiter(input: $input, condition: $condition) {
+export const onDeletePflegeheimMitarbeiter = `subscription OnDeletePflegeheimMitarbeiter {
+  onDeletePflegeheimMitarbeiter {
     id
     Vorname
     Nachname
@@ -976,11 +858,8 @@ export const deletePflegeheimMitarbeiter = `mutation DeletePflegeheimMitarbeiter
   }
 }
 `;
-export const createPflegeheimPdl = `mutation CreatePflegeheimPdl(
-  $input: CreatePflegeheimPDLInput!
-  $condition: ModelPflegeheimPDLConditionInput
-) {
-  createPflegeheimPDL(input: $input, condition: $condition) {
+export const onCreatePflegeheimPdl = `subscription OnCreatePflegeheimPdl {
+  onCreatePflegeheimPDL {
     id
     Vorname
     Nachname
@@ -998,11 +877,8 @@ export const createPflegeheimPdl = `mutation CreatePflegeheimPdl(
   }
 }
 `;
-export const updatePflegeheimPdl = `mutation UpdatePflegeheimPdl(
-  $input: UpdatePflegeheimPDLInput!
-  $condition: ModelPflegeheimPDLConditionInput
-) {
-  updatePflegeheimPDL(input: $input, condition: $condition) {
+export const onUpdatePflegeheimPdl = `subscription OnUpdatePflegeheimPdl {
+  onUpdatePflegeheimPDL {
     id
     Vorname
     Nachname
@@ -1020,11 +896,8 @@ export const updatePflegeheimPdl = `mutation UpdatePflegeheimPdl(
   }
 }
 `;
-export const deletePflegeheimPdl = `mutation DeletePflegeheimPdl(
-  $input: DeletePflegeheimPDLInput!
-  $condition: ModelPflegeheimPDLConditionInput
-) {
-  deletePflegeheimPDL(input: $input, condition: $condition) {
+export const onDeletePflegeheimPdl = `subscription OnDeletePflegeheimPdl {
+  onDeletePflegeheimPDL {
     id
     Vorname
     Nachname
@@ -1042,11 +915,8 @@ export const deletePflegeheimPdl = `mutation DeletePflegeheimPdl(
   }
 }
 `;
-export const createPraxis = `mutation CreatePraxis(
-  $input: CreatePraxisInput!
-  $condition: ModelPraxisConditionInput
-) {
-  createPraxis(input: $input, condition: $condition) {
+export const onCreatePraxis = `subscription OnCreatePraxis {
+  onCreatePraxis {
     id
     Strasse
     Praxisid
@@ -1067,11 +937,8 @@ export const createPraxis = `mutation CreatePraxis(
   }
 }
 `;
-export const updatePraxis = `mutation UpdatePraxis(
-  $input: UpdatePraxisInput!
-  $condition: ModelPraxisConditionInput
-) {
-  updatePraxis(input: $input, condition: $condition) {
+export const onUpdatePraxis = `subscription OnUpdatePraxis {
+  onUpdatePraxis {
     id
     Strasse
     Praxisid
@@ -1092,11 +959,8 @@ export const updatePraxis = `mutation UpdatePraxis(
   }
 }
 `;
-export const deletePraxis = `mutation DeletePraxis(
-  $input: DeletePraxisInput!
-  $condition: ModelPraxisConditionInput
-) {
-  deletePraxis(input: $input, condition: $condition) {
+export const onDeletePraxis = `subscription OnDeletePraxis {
+  onDeletePraxis {
     id
     Strasse
     Praxisid
@@ -1117,11 +981,8 @@ export const deletePraxis = `mutation DeletePraxis(
   }
 }
 `;
-export const createPraxisGeschaeftsfuerung = `mutation CreatePraxisGeschaeftsfuerung(
-  $input: CreatePraxisGeschaeftsfuerungInput!
-  $condition: ModelPraxisGeschaeftsfuerungConditionInput
-) {
-  createPraxisGeschaeftsfuerung(input: $input, condition: $condition) {
+export const onCreatePraxisGeschaeftsfuerung = `subscription OnCreatePraxisGeschaeftsfuerung {
+  onCreatePraxisGeschaeftsfuerung {
     id
     Vorname
     Nachname
@@ -1141,11 +1002,8 @@ export const createPraxisGeschaeftsfuerung = `mutation CreatePraxisGeschaeftsfue
   }
 }
 `;
-export const updatePraxisGeschaeftsfuerung = `mutation UpdatePraxisGeschaeftsfuerung(
-  $input: UpdatePraxisGeschaeftsfuerungInput!
-  $condition: ModelPraxisGeschaeftsfuerungConditionInput
-) {
-  updatePraxisGeschaeftsfuerung(input: $input, condition: $condition) {
+export const onUpdatePraxisGeschaeftsfuerung = `subscription OnUpdatePraxisGeschaeftsfuerung {
+  onUpdatePraxisGeschaeftsfuerung {
     id
     Vorname
     Nachname
@@ -1165,11 +1023,8 @@ export const updatePraxisGeschaeftsfuerung = `mutation UpdatePraxisGeschaeftsfue
   }
 }
 `;
-export const deletePraxisGeschaeftsfuerung = `mutation DeletePraxisGeschaeftsfuerung(
-  $input: DeletePraxisGeschaeftsfuerungInput!
-  $condition: ModelPraxisGeschaeftsfuerungConditionInput
-) {
-  deletePraxisGeschaeftsfuerung(input: $input, condition: $condition) {
+export const onDeletePraxisGeschaeftsfuerung = `subscription OnDeletePraxisGeschaeftsfuerung {
+  onDeletePraxisGeschaeftsfuerung {
     id
     Vorname
     Nachname
@@ -1189,11 +1044,8 @@ export const deletePraxisGeschaeftsfuerung = `mutation DeletePraxisGeschaeftsfue
   }
 }
 `;
-export const createPraxisMitarbeiter = `mutation CreatePraxisMitarbeiter(
-  $input: CreatePraxisMitarbeiterInput!
-  $condition: ModelPraxisMitarbeiterConditionInput
-) {
-  createPraxisMitarbeiter(input: $input, condition: $condition) {
+export const onCreatePraxisMitarbeiter = `subscription OnCreatePraxisMitarbeiter {
+  onCreatePraxisMitarbeiter {
     id
     Vorname
     Nachname
@@ -1213,11 +1065,8 @@ export const createPraxisMitarbeiter = `mutation CreatePraxisMitarbeiter(
   }
 }
 `;
-export const updatePraxisMitarbeiter = `mutation UpdatePraxisMitarbeiter(
-  $input: UpdatePraxisMitarbeiterInput!
-  $condition: ModelPraxisMitarbeiterConditionInput
-) {
-  updatePraxisMitarbeiter(input: $input, condition: $condition) {
+export const onUpdatePraxisMitarbeiter = `subscription OnUpdatePraxisMitarbeiter {
+  onUpdatePraxisMitarbeiter {
     id
     Vorname
     Nachname
@@ -1237,11 +1086,8 @@ export const updatePraxisMitarbeiter = `mutation UpdatePraxisMitarbeiter(
   }
 }
 `;
-export const deletePraxisMitarbeiter = `mutation DeletePraxisMitarbeiter(
-  $input: DeletePraxisMitarbeiterInput!
-  $condition: ModelPraxisMitarbeiterConditionInput
-) {
-  deletePraxisMitarbeiter(input: $input, condition: $condition) {
+export const onDeletePraxisMitarbeiter = `subscription OnDeletePraxisMitarbeiter {
+  onDeletePraxisMitarbeiter {
     id
     Vorname
     Nachname
@@ -1261,11 +1107,8 @@ export const deletePraxisMitarbeiter = `mutation DeletePraxisMitarbeiter(
   }
 }
 `;
-export const createRecords = `mutation CreateRecords(
-  $input: CreateRecordsInput!
-  $condition: ModelRecordsConditionInput
-) {
-  createRecords(input: $input, condition: $condition) {
+export const onCreateRecords = `subscription OnCreateRecords {
+  onCreateRecords {
     id
     arzt
     patient
@@ -1298,11 +1141,8 @@ export const createRecords = `mutation CreateRecords(
   }
 }
 `;
-export const updateRecords = `mutation UpdateRecords(
-  $input: UpdateRecordsInput!
-  $condition: ModelRecordsConditionInput
-) {
-  updateRecords(input: $input, condition: $condition) {
+export const onUpdateRecords = `subscription OnUpdateRecords {
+  onUpdateRecords {
     id
     arzt
     patient
@@ -1335,11 +1175,8 @@ export const updateRecords = `mutation UpdateRecords(
   }
 }
 `;
-export const deleteRecords = `mutation DeleteRecords(
-  $input: DeleteRecordsInput!
-  $condition: ModelRecordsConditionInput
-) {
-  deleteRecords(input: $input, condition: $condition) {
+export const onDeleteRecords = `subscription OnDeleteRecords {
+  onDeleteRecords {
     id
     arzt
     patient
@@ -1372,11 +1209,8 @@ export const deleteRecords = `mutation DeleteRecords(
   }
 }
 `;
-export const createBefunde = `mutation CreateBefunde(
-  $input: CreateBefundeInput!
-  $condition: ModelBefundeConditionInput
-) {
-  createBefunde(input: $input, condition: $condition) {
+export const onCreateBefunde = `subscription OnCreateBefunde {
+  onCreateBefunde {
     id
     PatientId
     zahn {
@@ -1403,11 +1237,8 @@ export const createBefunde = `mutation CreateBefunde(
   }
 }
 `;
-export const updateBefunde = `mutation UpdateBefunde(
-  $input: UpdateBefundeInput!
-  $condition: ModelBefundeConditionInput
-) {
-  updateBefunde(input: $input, condition: $condition) {
+export const onUpdateBefunde = `subscription OnUpdateBefunde {
+  onUpdateBefunde {
     id
     PatientId
     zahn {
@@ -1434,11 +1265,8 @@ export const updateBefunde = `mutation UpdateBefunde(
   }
 }
 `;
-export const deleteBefunde = `mutation DeleteBefunde(
-  $input: DeleteBefundeInput!
-  $condition: ModelBefundeConditionInput
-) {
-  deleteBefunde(input: $input, condition: $condition) {
+export const onDeleteBefunde = `subscription OnDeleteBefunde {
+  onDeleteBefunde {
     id
     PatientId
     zahn {
@@ -1465,11 +1293,8 @@ export const deleteBefunde = `mutation DeleteBefunde(
   }
 }
 `;
-export const createTracking = `mutation CreateTracking(
-  $input: CreateTrackingInput!
-  $condition: ModelTrackingConditionInput
-) {
-  createTracking(input: $input, condition: $condition) {
+export const onCreateTracking = `subscription OnCreateTracking {
+  onCreateTracking {
     id
     start
     end
@@ -1491,11 +1316,8 @@ export const createTracking = `mutation CreateTracking(
   }
 }
 `;
-export const updateTracking = `mutation UpdateTracking(
-  $input: UpdateTrackingInput!
-  $condition: ModelTrackingConditionInput
-) {
-  updateTracking(input: $input, condition: $condition) {
+export const onUpdateTracking = `subscription OnUpdateTracking {
+  onUpdateTracking {
     id
     start
     end
@@ -1517,11 +1339,8 @@ export const updateTracking = `mutation UpdateTracking(
   }
 }
 `;
-export const deleteTracking = `mutation DeleteTracking(
-  $input: DeleteTrackingInput!
-  $condition: ModelTrackingConditionInput
-) {
-  deleteTracking(input: $input, condition: $condition) {
+export const onDeleteTracking = `subscription OnDeleteTracking {
+  onDeleteTracking {
     id
     start
     end
@@ -1543,11 +1362,8 @@ export const deleteTracking = `mutation DeleteTracking(
   }
 }
 `;
-export const createVolgebehandlung = `mutation CreateVolgebehandlung(
-  $input: CreateVolgebehandlungInput!
-  $condition: ModelVolgebehandlungConditionInput
-) {
-  createVolgebehandlung(input: $input, condition: $condition) {
+export const onCreateVolgebehandlung = `subscription OnCreateVolgebehandlung {
+  onCreateVolgebehandlung {
     id
     Leistungsname
     Name
@@ -1561,11 +1377,8 @@ export const createVolgebehandlung = `mutation CreateVolgebehandlung(
   }
 }
 `;
-export const updateVolgebehandlung = `mutation UpdateVolgebehandlung(
-  $input: UpdateVolgebehandlungInput!
-  $condition: ModelVolgebehandlungConditionInput
-) {
-  updateVolgebehandlung(input: $input, condition: $condition) {
+export const onUpdateVolgebehandlung = `subscription OnUpdateVolgebehandlung {
+  onUpdateVolgebehandlung {
     id
     Leistungsname
     Name
@@ -1579,11 +1392,8 @@ export const updateVolgebehandlung = `mutation UpdateVolgebehandlung(
   }
 }
 `;
-export const deleteVolgebehandlung = `mutation DeleteVolgebehandlung(
-  $input: DeleteVolgebehandlungInput!
-  $condition: ModelVolgebehandlungConditionInput
-) {
-  deleteVolgebehandlung(input: $input, condition: $condition) {
+export const onDeleteVolgebehandlung = `subscription OnDeleteVolgebehandlung {
+  onDeleteVolgebehandlung {
     id
     Leistungsname
     Name
@@ -1597,11 +1407,8 @@ export const deleteVolgebehandlung = `mutation DeleteVolgebehandlung(
   }
 }
 `;
-export const createWegegeldTable = `mutation CreateWegegeldTable(
-  $input: CreateWegegeldTableInput!
-  $condition: ModelWegegeldTableConditionInput
-) {
-  createWegegeldTable(input: $input, condition: $condition) {
+export const onCreateWegegeldTable = `subscription OnCreateWegegeldTable {
+  onCreateWegegeldTable {
     id
     Distanz
     Nummer
@@ -1612,11 +1419,8 @@ export const createWegegeldTable = `mutation CreateWegegeldTable(
   }
 }
 `;
-export const updateWegegeldTable = `mutation UpdateWegegeldTable(
-  $input: UpdateWegegeldTableInput!
-  $condition: ModelWegegeldTableConditionInput
-) {
-  updateWegegeldTable(input: $input, condition: $condition) {
+export const onUpdateWegegeldTable = `subscription OnUpdateWegegeldTable {
+  onUpdateWegegeldTable {
     id
     Distanz
     Nummer
@@ -1627,11 +1431,8 @@ export const updateWegegeldTable = `mutation UpdateWegegeldTable(
   }
 }
 `;
-export const deleteWegegeldTable = `mutation DeleteWegegeldTable(
-  $input: DeleteWegegeldTableInput!
-  $condition: ModelWegegeldTableConditionInput
-) {
-  deleteWegegeldTable(input: $input, condition: $condition) {
+export const onDeleteWegegeldTable = `subscription OnDeleteWegegeldTable {
+  onDeleteWegegeldTable {
     id
     Distanz
     Nummer
@@ -1642,11 +1443,8 @@ export const deleteWegegeldTable = `mutation DeleteWegegeldTable(
   }
 }
 `;
-export const createScheine = `mutation CreateScheine(
-  $input: CreateScheineInput!
-  $condition: ModelScheineConditionInput
-) {
-  createScheine(input: $input, condition: $condition) {
+export const onCreateScheine = `subscription OnCreateScheine {
+  onCreateScheine {
     id
     Krankenkasse
     Kostentraegerkennung
@@ -1689,11 +1487,8 @@ export const createScheine = `mutation CreateScheine(
   }
 }
 `;
-export const updateScheine = `mutation UpdateScheine(
-  $input: UpdateScheineInput!
-  $condition: ModelScheineConditionInput
-) {
-  updateScheine(input: $input, condition: $condition) {
+export const onUpdateScheine = `subscription OnUpdateScheine {
+  onUpdateScheine {
     id
     Krankenkasse
     Kostentraegerkennung
@@ -1736,11 +1531,8 @@ export const updateScheine = `mutation UpdateScheine(
   }
 }
 `;
-export const deleteScheine = `mutation DeleteScheine(
-  $input: DeleteScheineInput!
-  $condition: ModelScheineConditionInput
-) {
-  deleteScheine(input: $input, condition: $condition) {
+export const onDeleteScheine = `subscription OnDeleteScheine {
+  onDeleteScheine {
     id
     Krankenkasse
     Kostentraegerkennung
@@ -1783,11 +1575,8 @@ export const deleteScheine = `mutation DeleteScheine(
   }
 }
 `;
-export const createZahn = `mutation CreateZahn(
-  $input: CreateZahnInput!
-  $condition: ModelZahnConditionInput
-) {
-  createZahn(input: $input, condition: $condition) {
+export const onCreateZahn = `subscription OnCreateZahn {
+  onCreateZahn {
     id
     Distanz
     status
@@ -1797,11 +1586,8 @@ export const createZahn = `mutation CreateZahn(
   }
 }
 `;
-export const updateZahn = `mutation UpdateZahn(
-  $input: UpdateZahnInput!
-  $condition: ModelZahnConditionInput
-) {
-  updateZahn(input: $input, condition: $condition) {
+export const onUpdateZahn = `subscription OnUpdateZahn {
+  onUpdateZahn {
     id
     Distanz
     status
@@ -1811,11 +1597,8 @@ export const updateZahn = `mutation UpdateZahn(
   }
 }
 `;
-export const deleteZahn = `mutation DeleteZahn(
-  $input: DeleteZahnInput!
-  $condition: ModelZahnConditionInput
-) {
-  deleteZahn(input: $input, condition: $condition) {
+export const onDeleteZahn = `subscription OnDeleteZahn {
+  onDeleteZahn {
     id
     Distanz
     status
